@@ -1,5 +1,5 @@
 * {
-    
+
     margin: 0;
     padding: 0;
 
@@ -32,7 +32,7 @@ nav a {
 nav a:hover {
 
     background-color: rgba(29, 99, 230, 0.808);
-
+    
 }
 
 h1 {
@@ -45,30 +45,29 @@ h1 {
 
 }
 
-table {
+
+action {
 
     display: flex;
     justify-content: center;
-    border-collapse: collapse;
-    text-align: center;
+    align-items: center;
+    flex-direction: column;
     color: whitesmoke;
-  
-}
-
-table td {
-
-    padding: 0 15px;
-
-}
-
-table tr:nth-child(odd) {
-
-    background-color: rgb(8, 8, 8);
-
-}
-
-table tr:nth-child(even) {
-
-    background-color: rgba(46, 49, 54, 0.918);
     
+}
+
+button {
+    
+    font-family: Verdana;
+    font-weight: bold;
+    margin: 15px;
+    padding: 5px;
+    background-color: rgb(226, 101, 17);
+    
+}
+
+select {
+
+    margin: 15px;
+    padding: 5px;
 }
