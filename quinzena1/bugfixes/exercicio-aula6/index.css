@@ -73,6 +73,7 @@ div img {
     font-size: larger;
     font-weight: bold;
     font-family: Roboto;
+    height: 400px;
 }
 
 #container-de-descricao>ol {
@@ -82,6 +83,7 @@ div img {
 
 #container-para-comprar {
     background-color: #e7eb90;
+    height: 290px;
 }
 
 #container-para-comprar>p {
