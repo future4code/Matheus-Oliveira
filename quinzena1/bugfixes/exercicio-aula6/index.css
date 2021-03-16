@@ -78,9 +78,29 @@ div>p:first-child {
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
     list-style-position: inside;
+   
 }
+ol {
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+  }
+  ol ol {
+      margin-left: 2em;
+  }
+  li {
+    list-style-position: inside;
+    padding: 0;
+  }
+  li::before {
+    content: "";
+    width: 20px;
+    display: inline-block;
+    
+  }
 
 #container-para-comprar {
     background-color: #e7eb90;
