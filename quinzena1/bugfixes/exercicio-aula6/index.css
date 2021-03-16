@@ -84,7 +84,7 @@ div>p:first-child {
 
 #container-para-comprar {
     background-color: #e7eb90;
-    height: 290px;
+    height: 285px;
 }
 
 #container-para-comprar>p {
@@ -136,6 +136,11 @@ td button {
     color: black;
 }
 
+td {
+    text-align: center; 
+    
+}
+
 td button:hover {
 
     background-color: #ffaf43;
@@ -160,4 +165,20 @@ td button:hover {
 
 #back-button:hover {
     background-color: #635a3d
+}
+
+.botao-voltar {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 150px;
+
+}
+
+.tabela {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
