@@ -18,7 +18,7 @@ body {
 
     border-radius: 50%;
     padding: 5px;
-
+    
 }
 
 nav {
@@ -36,6 +36,11 @@ nav a {
     text-decoration: none;
     color: whitesmoke;
 
+}
+
+nav a:hover {
+
+    background-color: rgba(29, 99, 230, 0.808);
 }
 
 #texto-1 h1 {
@@ -67,6 +72,7 @@ nav a {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
 }
 
 #texto-1 div p {
@@ -91,10 +97,12 @@ footer {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
 }
 
 footer p {
 
     padding: 15px;
     color: whitesmoke;
+    
 }
