@@ -12,7 +12,6 @@ body {
 
 }
 
-
 nav {
 
     background-color: rgb(8, 8, 8);
@@ -30,6 +29,12 @@ nav a {
 
 }
 
+nav a:hover {
+
+    background-color: rgba(29, 99, 230, 0.808);
+    
+}
+
 h1 {
 
     display: flex;
@@ -40,7 +45,6 @@ h1 {
 
 }
 
-
 action {
 
     display: flex;
@@ -48,7 +52,7 @@ action {
     align-items: center;
     flex-direction: column;
     color: whitesmoke;
-
+    
 }
 
 button {
