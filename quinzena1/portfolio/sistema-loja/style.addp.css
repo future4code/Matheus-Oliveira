@@ -1,0 +1,66 @@
+* {
+
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+
+    font-family: Verdana;
+    background-color: #202121;
+
+}
+
+nav {
+
+    background-color: rgb(8, 8, 8);
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px;
+ 
+}
+
+nav a {
+
+    padding: 15px;
+    text-decoration: none;
+    color: whitesmoke;
+
+}
+
+nav a:hover {
+
+    background-color: rgba(29, 99, 230, 0.808);
+    
+}
+
+h1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    padding: 50px;
+
+}
+
+action {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: whitesmoke;
+    
+}
+
+button {
+    
+    font-family: Verdana;
+    font-weight: bold;
+    margin: 15px;
+    padding: 5px;
+    background-color: rgb(226, 101, 17);
+    
+}

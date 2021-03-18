@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+  }
+
+body {
+
+    font-family: Arial;
+    background-color: #D3EFFB;
+
+  }
+
+#menu {
+
+    list-style: none;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #005CA5;
+    font-weight: bold;
+   
+  }
+
+  #menu div {
+
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0 30px;
+    
+  }
+
+ #menu a {
+
+  font-size: 22px;
+  color: #ED7D50;
+  text-decoration: none;
+  padding: 10px;
+
+ }
+
+ #menu a:hover {
+
+  background-color: #ED7D50;
+  color: whitesmoke;
+  
+ }
+
+#texto-1 h1 {
+
+  padding-top: 120px;
+  text-align: center;
+  font-size: 35px;
+  color: black;
+  text-decoration: none;
+
+  }
+
+#texto-1 div {
+
+  
+  display: flex;
+  justify-content: center;
+  font-size: 19px;
+  color: black;
+  text-decoration: none;
+  max-width: 550px;
+
+  }
+
+.container {
+
+  max-width: 1000px;
+  margin: auto;
+  background-color: #FFFFFF;
+
+  }
+
+#texto-1 {
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+#texto-1 div p{
+
+  text-align: justify;
+
+}
+
+.text {
+
+  margin: 50px;
+
+}
+
+h3 {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  font-size: 23px;
+  padding: 50px;
+  
+}
+
+.lista-1{
+
+  padding: 20px;
+  font-size: 16px;
+  color: black;
+  max-width: auto;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.img img {
+
+  width: 100%;
+ 
+}
+
+.img {
+
+  background-color: #005CA5;
+
+}
+
+div h5 {
+
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+#texto-3 h3 {
+
+  padding: 35px;
+  text-align: center;
+  font-size: 23px;
+  color: #FFFFFF;
+  text-decoration: none;
+  background-color: #005CA5;
+
+}
+
+.lista-2{
+
+  padding: 40px;
+  padding-top: 15px;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #005CA5;
+  font-weight: bold; 
+  max-width: auto;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+#contato{
+
+  padding-top: 40px;
+  font-size: 16px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  background-color: #ED7D50;
+
+}
+
+#contato a img {
+
+  border-radius: 50%;
+
+}
+
+footer h5 {
+
+  background-color: #ED7D50;
+  padding-bottom: 35px;
+  font-size: 11px;
+
+}
+
+.projeto-loja {
+
+  font-weight: bold;
+  font-size: 35px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.projeto-labenu {
+
+  font-weight: bold;
+  font-size: 35px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
