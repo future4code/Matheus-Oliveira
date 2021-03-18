@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+
+    font-family: Verdana;
+    background-color: #202121;
+
+}
+
+nav {
+
+    background-color: rgb(8, 8, 8);
+    display: flex;
+    justify-content: flex-end;
+    padding: 25px;
+ 
+}
+
+nav a {
+
+    padding: 15px;
+    text-decoration: none;
+    color: whitesmoke;
+
+}
+
+nav a:hover {
+
+    background-color: rgba(29, 99, 230, 0.808);
+
+}
+
+h1 {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    padding: 50px;
+    
+}
+
+table {
+
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    border-collapse: collapse;
+      
+}
+
+table tr {
+
+    background-color: rgb(8, 8, 8);
+    justify-content: center;
+    text-align: center;
+
+}
+
+table td {
+
+    border-collapse: collapse;
+    padding: 15px;
+
+}
+
+table tr:nth-child(odd) {
+
+    background-color: rgb(8, 8, 8);
+
+}
+
+table tr:nth-child(even) {
+
+    background-color: rgba(46, 49, 54, 0.918);
+
+}

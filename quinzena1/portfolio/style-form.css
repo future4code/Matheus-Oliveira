@@ -1,0 +1,74 @@
+* {
+
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+
+  font-family: Arial;
+  background-color: #D3EFFB;
+
+}
+
+#menu-form {
+
+  background-color: #005CA5;
+  max-width: 960px;
+  padding: 11px;
+  margin: auto;
+  
+  
+   
+}
+
+#menu-form img{
+
+  margin-left: 20px;
+  padding: 10px;
+
+}
+
+section div {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 35px;
+
+}
+
+label {
+
+  padding: 15px;
+
+}
+
+.button {
+
+  background-color: #ED7D50;
+  padding: 15px;
+  font-weight: bold;
+  font-size: 15px;
+
+}
+
+input#nome {
+
+  padding: 25px;
+  font-size: larger;
+
+} 
+
+input#email {
+
+  padding: 25px;
+  font-size: larger;
+
+}
+
+textarea {
+
+  font-size: larger;
+}
