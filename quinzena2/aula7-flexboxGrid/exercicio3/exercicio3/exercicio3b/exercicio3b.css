@@ -12,23 +12,20 @@ body {
     display: grid;
     grid-template-rows: 50px 600px 237px 50px;
     
-
 }
 
 #top-container {
 
     display: grid;
     grid-template-columns: 1fr 3fr;
- 
-     
+    
 }
 
 #middle-container {
 
     display: grid;
     grid-template-columns: 3fr 1fr 2fr;
-    
-    
+      
 }
 
 .green-background {
