@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #111;
+    height: 100vh;
+}
+  
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F6AF56;
+  color: white;
+  height: 20vh;
+  font-size: 50px;
+}
+
+h2 {
+    color: white;
+    padding-bottom: 22px;
+}
+
+.form-usuario-lista {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 22px;
+  border: 1px solid #F6AF56;
+}
+
+.main-button {
+    height: 30px;
+    margin: 15px;
+    padding: 0 15px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #F47D1F;
+    color: white;
+    cursor: pointer;
+}
+
+.main-button:hover{
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.main-button:last-child {
+    font-size: 12px;
+    height: 22px;
+    margin: 10px;
+    padding: 0 8px;
+}
+
+.main-user {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
