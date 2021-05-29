@@ -6,29 +6,33 @@ export default class Playlists extends React.Component {
     playlistList: []
   }
 
-  allPlaylists = () => {
-    axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
-    headers: {
-      Authorization: 'matheus-rodrigues-munoz'
-    }
-    }).then((res) => {
-      this.setState({playlistList: res.data})
-			console.log(res.data)
-    }).catch(() => {
-    })
+  getAllPlaylists = () => {
+    axios
+      .get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
+        headers: {
+          Authorization: 'matheus-rodrigues-munoz'
+        }
+        }).then((res) => {
+          this.setState({playlistList: res.data.result.list})
+        }).catch(() => {
+        })
+  }
+
+  componentDidMount() {
+    {this.getAllPlaylists()}
   }
 
   render() {
     return (
       <div>
       	<h1>Playlists</h1>
-					{this.state.playlistList.map((playlist, index) => { 
-      			return (
-            	<div key={index}>
-              	<span>{playlist.name}</span>
-            	</div>
-          	)
-      		})}
+        {this.state.playlistList.map((playlist) => { 
+              return (
+                <div key={playlist.id}>
+                  <span>{playlist.name}</span>
+                </div>
+              )
+          })}
       </div>
     );
   }

@@ -28,18 +28,6 @@ export default class CreatePlaylistForm extends React.Component {
       })
     }
 
-    allPlaylists = () => {
-    axios.get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
-    headers: {
-      Authorization: 'matheus-rodrigues-munoz'
-    }
-    }).then((res) => {
-      this.setState({playlistList: res.data.result})
-			console.log(res.data)
-    }).catch(() => {
-    })
-  }
-
   render() {
     return (
       <div>
