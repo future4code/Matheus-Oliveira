@@ -25,34 +25,37 @@ export default class Playlists extends React.Component {
 
   removerPlaylist = (playlistId) => {
     if( window.confirm("Do you really want to delete your playlist?")) {
-      const deletePlaylist = playlistId;
+      const deletePlaylist = playlistId
         axios
           .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${deletePlaylist}`, {
             headers: { 
               Authorization: 'matheus-rodrigues-munoz'
             }
           }).then((res) => {
-              alert('Playlist deleted!', res.data);
+              alert('Playlist deleted!', res.data)
               this.getAllPlaylists()
             }
           ).catch((err) =>{
-            alert('Error.', err.res.data);
+            alert('Error.', err.res.data)
           })
     }
   }
 
   render() {
+    const mapPlaylist = this.state.playlistList.map((playlist) =>{
+      return (
+        <div key={playlist.id}>
+          <span>{playlist.name}</span>
+          <button onClick={() => this.removerPlaylist(playlist.id)}>Remove</button>
+        </div>
+      )
+    })
+
     return (
       <div>
-      	<h1>Playlists</h1>
-        {this.state.playlistList.map((playlist) => { 
-              return (
-                <div key={playlist.id}>
-                  <span>{playlist.name}</span>
-                  <button onClick={() => this.removerPlaylist(playlist.id)}>Remove</button>
-                </div>
-              )
-          })}
+      	<h1>Playlist Library</h1>
+        {mapPlaylist}
+        <button onClick={() => this.props.PageChange("CreatePlaylistPage")}>Back</button>
       </div>
     );
   }
