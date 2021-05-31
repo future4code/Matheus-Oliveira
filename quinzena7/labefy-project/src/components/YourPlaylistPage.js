@@ -55,7 +55,7 @@ export default class Playlists extends React.Component {
       <div>
       	<h1>Playlist Library</h1>
         {mapPlaylist}
-        <button onClick={() => this.props.PageChange("CreatePlaylistPage")}>Back</button>
+        <button onClick={() => this.props.PageChange("Home")}>Back to home</button>
       </div>
     );
   }

@@ -35,6 +35,7 @@ export default class CreatePlaylistForm extends React.Component {
         <input value={this.state.inputNameValue} onChange={this.onChangeInputName} placeholder="Playlist name..."></input>
         <button onClick={this.createPlaylist}>+</button>
         <button onClick={() => this.props.PageChange("YourPlaylistPage")}>Your Library</button>
+        <button onClick={() => this.props.PageChange("Home")}>Back to home</button>
       </div>
     );
   }
