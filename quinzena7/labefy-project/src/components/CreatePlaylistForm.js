@@ -2,17 +2,10 @@ import React from 'react'
 import axios from 'axios'
 
 export default class CreatePlaylistForm extends React.Component {
-  state = {
-    inputNameValue: ""
-  }
-
-  onChangeInputName = (event) => {
-    this.setState({inputNameValue: event.target.value})
-  }
-
+ 
   createPlaylist = () => {
     const body = {
-      name: this.state.inputNameValue,
+      name: this.props.inputNameValue,
   }
 
     axios
@@ -22,9 +15,9 @@ export default class CreatePlaylistForm extends React.Component {
         }
       }).then((res) => {
         alert("Playlist successfully created", res)
-          this.setState({inputNameValue: ""})
+          this.setState({ inputNameValue: "" })
       }).catch((err) => {
-          alert("Error", err)
+          alert("Error", err.data)
       })
     }
 
@@ -32,7 +25,7 @@ export default class CreatePlaylistForm extends React.Component {
     return (
       <div>
         <h1>Create your Playlist here!</h1>
-        <input value={this.state.inputNameValue} onChange={this.onChangeInputName} placeholder="Playlist name..."></input>
+        <input value={this.props.inputNameValue} onChange={this.props.onChangeInputName} placeholder="Playlist name..."></input>
         <button onClick={this.createPlaylist}>+</button>
         <button onClick={() => this.props.PageChange("PlaylistLibrary")}>Your Library</button>
         <button onClick={() => this.props.PageChange("Dashboard")}>Back to Dashboard</button>
