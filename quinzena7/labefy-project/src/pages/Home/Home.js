@@ -51,6 +51,21 @@ const BackgroundBody = styled.div`
   .image-space {
     padding-left: 30px;
   }
+
+  ul {
+    position: absolute;
+    z-index: 1000;
+    padding: 111px 318px;
+  }
+
+  ul li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 24px;
+    color: #FC6D6D;
+    position: relative;
+    top: 0;
+  }
 `
 export default class Home extends React.Component {
   
@@ -61,8 +76,13 @@ export default class Home extends React.Component {
         <div className="nav">
           <h1>Music</h1>
         </div>
-        
-        <h2>never stop listening</h2>
+        <h2>never stop</h2> 
+          <ul>
+            <li><span>listening</span></li>
+            <li><span>enjoying</span></li>
+            <li><span>loving</span></li>
+            <li><span>dancing...</span></li>
+          </ul>
         
         <video className="background-video" autoPlay loop muted>
           <source src={BackgroundVideo} type="video/mp4"/>
