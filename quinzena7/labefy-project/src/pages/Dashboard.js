@@ -15,8 +15,8 @@ const DashboardBackground = styled.div`
     font-size: 18px;
     font-weight: bold;
     cursor: pointer;
-    right: -1400px;
-    top: 20px;
+    right: -1350px;
+    top: 1px;
     transition: 0.5s;
   }
 

@@ -54,10 +54,6 @@ export default class App extends React.Component {
           responseGoogleImg={this.state.responseGoogleImg}
           />
         )
-      case "PlaylistLibrary":
-        return <PlaylistLibrary 
-        PageChange={this.PageChange}
-        />
       default:
         return <h1>Page not found</h1>
     }
