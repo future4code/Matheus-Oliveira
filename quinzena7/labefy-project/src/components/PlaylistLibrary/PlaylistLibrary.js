@@ -1,6 +1,12 @@
 import React from 'react'
 import axios from 'axios'
-import PlaylistPage from './PlaylistPage'
+import styled from 'styled-components'
+
+const LibraryContainer = styled.div`
+  position: absolute;
+  right: 250px;
+  top: 460px;
+`
 
 export default class PlaylistLibrary extends React.Component {
   state = {
@@ -56,7 +62,9 @@ export default class PlaylistLibrary extends React.Component {
 
     return (
       <div>
-      	<h1>Playlist Library</h1>
+        <LibraryContainer>
+          <h1>Playlist Library</h1>
+        </LibraryContainer>
         <input
           type="text"
           value={this.state.inputSearch} 

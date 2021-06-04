@@ -1,5 +1,12 @@
 import React from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const CreateContainer = styled.div`
+  position: absolute;
+  left: 200px;
+  top: 460px;
+`
 
 export default class CreatePlaylistForm extends React.Component {
  state ={
@@ -32,10 +39,12 @@ export default class CreatePlaylistForm extends React.Component {
   render() {
     return (
       <div>
+      <CreateContainer>
         <h1>Create your Playlist here!</h1>
+      </CreateContainer>
         <input value={this.state.inputNameValue} onChange={this.onChangeInputName} placeholder="Playlist name..."></input>
         <button onClick={this.createPlaylist}>+</button>
-      </div>
+        </div>
     );
   }
 }

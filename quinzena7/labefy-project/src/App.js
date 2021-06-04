@@ -7,7 +7,7 @@ import './App.css'
 
 export default class App extends React.Component {
   state = {
-    page: "Dashboard",
+    page: "Home",
     responseGoogleName: null,
     responseGoogleImg: null,
   }
