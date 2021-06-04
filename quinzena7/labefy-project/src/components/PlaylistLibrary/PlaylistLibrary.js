@@ -1,13 +1,10 @@
 import React from 'react'
 import axios from 'axios'
+import PlaylistPage from './PlaylistPage'
 
 export default class PlaylistLibrary extends React.Component {
   state = {
-    inputSearch: ""
-  }
-
-  componentDidMount() {
-    {this.props.getAllPlaylists()}
+    inputSearch: "",
   }
 
   searchPlaylist = (event) => {
@@ -15,6 +12,10 @@ export default class PlaylistLibrary extends React.Component {
       inputSearch: event.target.value,
     });
   };
+
+  componentDidMount() {
+    this.props.getAllPlaylists()
+  }
 
   deletePlaylist = (playlistId) => {
     if( window.confirm("Do you really want to delete your playlist?")) {
@@ -25,8 +26,8 @@ export default class PlaylistLibrary extends React.Component {
               Authorization: 'matheus-rodrigues-munoz'
             }
           }).then(() => {
-              alert('Playlist deleted!')
-              this.props.getAllPlaylists()
+            alert('Playlist deleted!')
+            this.props.getAllPlaylists()
             }
           ).catch((err) =>{
             alert('Error.', err.data)
@@ -46,7 +47,7 @@ export default class PlaylistLibrary extends React.Component {
       return (
         <div key={playlist.id}>
           <span>{playlist.name}</span>
-          <button onClick={() => this.props.goToPlaylistPage(playlist.id, playlist.name)}>Add music</button>
+          <button onClick={() => this.props.goToPlaylistPage(playlist.id, playlist.name)}>Add musics</button>
           <button onClick={() => this.deletePlaylist(playlist.id)}>Delete Playlist
           </button>
         </div>
@@ -63,7 +64,6 @@ export default class PlaylistLibrary extends React.Component {
           placeholder="Search for a playlist">
         </input>
         {mapPlaylist}
-        <button onClick={() => this.props.PageChange("Dashboard")}>Back to Dashboard</button>
       </div>
     );
   }

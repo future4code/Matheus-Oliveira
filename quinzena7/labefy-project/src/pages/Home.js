@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import BackgroundVideo from '../../assets/videos/backgroundvideo.mp4'
-import FacebookIcon from '../../assets/images/facebook.svg'
-import TwitterIcon from '../../assets/images/twitter.svg'
-import InstagramIcon from '../../assets/images/instagram.svg'
+import BackgroundVideo from '../assets/videos/backgroundvideo.mp4'
+import FacebookIcon from '../assets/images/facebook.svg'
+import TwitterIcon from '../assets/images/twitter.svg'
+import InstagramIcon from '../assets/images/instagram.svg'
 
 const BackgroundBody = styled.div`
   background-color: #111;
@@ -60,7 +60,7 @@ const BackgroundBody = styled.div`
 
   ul li {
     list-style: none;
-    font-weight: bold;
+    font-weight: bolder;
     font-size: 24px;
     color: #FC6D6D;
     position: relative;

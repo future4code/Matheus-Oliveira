@@ -111,8 +111,8 @@ export default class PlaylistPage extends React.Component {
           <button onClick={() => this.addTrackPlaylist()}>
             Add Track
           </button>
-          <button onClick={() => this.props.PageChange("PlaylistLibrary")}>
-            Back to Playlist Library
+          <button onClick={() => this.props.LibraryToPlaylistPage("Dashboard")}>
+            Back to Dashboard
           </button>
           <h1>Playlist Tracks</h1>
           {mapTracks}

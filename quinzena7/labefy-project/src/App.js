@@ -1,21 +1,15 @@
 import React from 'react'
-import axios from 'axios'
 import GoogleLogin from 'react-google-login'
-import CreatePlaylistForm from './pages/CreatePlaylistPage/CreatePlaylistPage'
-import PlaylistLibrary from './pages/PlaylistLibrary/PlaylistLibrary'
-import PlaylistPage from './pages/PlaylistPage/PlaylistPage'
-import Dashboard from './pages/Dashboard/Dashboard'
-import Home from './pages/Home/Home'
+import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
+import PlaylistLibrary from './components/PlaylistLibrary/PlaylistLibrary'
 import './App.css'
 
 export default class App extends React.Component {
   state = {
-    page: "Home",
-    libraryList: [],
-    selectedPlaylistId: null,
-    selectedPlaylistName: null,
+    page: "Dashboard",
     responseGoogleName: null,
-    responseGoogleImg: null
+    responseGoogleImg: null,
   }
 
   responseGoogle = (response) => {
@@ -33,24 +27,6 @@ export default class App extends React.Component {
       page: page,
     });
   };
-
-  goToPlaylistPage = (playlistId, playlistName) => {
-    this.PageChange("PlaylistPage")
-    this.setState({ selectedPlaylistId: playlistId })
-    this.setState({ selectedPlaylistName: playlistName })
-  }
-
-  getAllPlaylists = () => {
-    axios
-      .get("https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists", {
-        headers: {
-          Authorization: 'matheus-rodrigues-munoz'
-        }
-        }).then((res) => {
-          this.setState({ libraryList: res.data.result.list })
-        }).catch(() => {
-        })
-  }
 
   renderPage = () => {
     switch (this.state.page) {
@@ -72,33 +48,16 @@ export default class App extends React.Component {
         )
       case "Dashboard":
         return (
-        <Dashboard
-        PageChange={this.PageChange}
-        responseGoogleName={this.state.responseGoogleName}
-        responseGoogleImg={this.state.responseGoogleImg}
-        />
+          <Dashboard
+          PageChange={this.PageChange}
+          responseGoogleName={this.state.responseGoogleName}
+          responseGoogleImg={this.state.responseGoogleImg}
+          />
         )
-      case "CreatePlaylistPage":
-        return <CreatePlaylistForm
-        PageChange={this.PageChange}
-        />
       case "PlaylistLibrary":
-        return (
-        <PlaylistLibrary
-        libraryList={this.state.libraryList}
-        playlistList={this.state.playlistList}
-        getAllPlaylists={this.getAllPlaylists}
-        goToPlaylistPage={this.goToPlaylistPage}
-        PageChange={this.PageChange}/>
-        )
-      case "PlaylistPage":
-        return (
-        <PlaylistPage 
-        getAllPlaylists={this.getAllPlaylists}
+        return <PlaylistLibrary 
         PageChange={this.PageChange}
-        selectedPlaylistId={this.state.selectedPlaylistId}
-        selectedPlaylistName={this.state.selectedPlaylistName}/>
-        )
+        />
       default:
         return <h1>Page not found</h1>
     }
