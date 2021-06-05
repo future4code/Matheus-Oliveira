@@ -9,6 +9,7 @@ import PlaylistPage from '../components/PlaylistLibrary/PlaylistPage'
 const DashboardBackground = styled.div`
   background-color: #111;
   height: 100vh;
+  width: 100vw;
   color: white;
 
   .background-image-mic {
@@ -20,19 +21,24 @@ const DashboardBackground = styled.div`
     object-fit: cover;
     opacity: 0.9;
     z-index: 0;
-    opacity: 0.25;
+    opacity: 0.3;
+    display: block;
   }
+  
+`
+const LogoutContainer = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.5s;
+  z-index: 2;
+  width: 100%;
 
   .logout-txt {
-    position: absolute;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    right: -1350px;
-    top: 1px;
-    transition: 0.5s;
-    z-index: 2;
-    
+    position: fixed;
+    transition: color 0.5s;
+    top: 9vh;
+    left: 86vw;
   }
 
   .logout-txt:hover {
@@ -43,11 +49,15 @@ const DashboardBackground = styled.div`
 
 const WelcomeContainer = styled.div`
   position: absolute;
-  left: 200px;
-  top: 90px;
-  display: inline-block;
-  margin: 0;
+  left: 0;
+  top: 0;
   z-index: 2;
+
+  .welcome-info {
+    position: fixed;
+    left: 15vw;
+    top: 10vh;
+  }
 
   h1:after {
   display:block;
@@ -95,7 +105,7 @@ const DashboardTitle = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  padding-top: 350px;
+  padding-top: 330px;
   text-transform: uppercase;
   font-size: 26px;
 
@@ -149,14 +159,18 @@ export default class Dashboard extends React.Component {
       <DashboardBackground>
         <img className="background-image-mic" src={BackgroundMic}></img>
         <WelcomeContainer>
-          <h1 className="fromLeft">Welcome,</h1>
-        <NamePhotoContainer>
-          <h2 className="fromLeft">{this.props.responseGoogleName}</h2>
-          <img src={this.props.responseGoogleImg}></img>
-        </NamePhotoContainer>
+          <div className="welcome-info">
+            <h1 className="fromLeft">Welcome,</h1>
+            <NamePhotoContainer>
+              <h2 className="fromLeft">{this.props.responseGoogleName}</h2>
+              <img src={this.props.responseGoogleImg}></img>
+            </NamePhotoContainer>
+          </div>
+        <LogoutContainer>
           <a className="logout-txt" 
           onClick={() => this.props.PageChange("Home")}>Logout
           </a>
+        </LogoutContainer>
         </WelcomeContainer>
    
         <DashboardTitle>

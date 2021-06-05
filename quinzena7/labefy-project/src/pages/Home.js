@@ -6,20 +6,16 @@ import TwitterIcon from '../assets/images/twitter.svg'
 import InstagramIcon from '../assets/images/instagram.svg'
 
 const BackgroundBody = styled.div`
-  background-color: #111;
-
+  
   .nav {
     position: absolute;
     right: 0;
     top: 0;
     width: 100%;
     padding: 40px 100px;
-    z-index: 1000;
+    z-index: 2;
     font-size: 26px;
     color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
   
   .background-video {
@@ -29,13 +25,12 @@ const BackgroundBody = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
-    z-index: 1;
+    z-index: 0;
   }
 
   h2 {
     position: absolute;
-    z-index: 1000;
+    z-index: 2;
     color: white;
     padding: 110px 180px;
   }
@@ -45,7 +40,7 @@ const BackgroundBody = styled.div`
     position: absolute;
     top: 88%;
     left: 5%;
-    z-index: 1000;
+    z-index: 2;
   }
 
   .image-space {
@@ -54,7 +49,7 @@ const BackgroundBody = styled.div`
 
   ul {
     position: absolute;
-    z-index: 1000;
+    z-index: 2;
     padding: 111px 318px;
   }
 
