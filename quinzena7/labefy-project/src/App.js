@@ -2,7 +2,6 @@ import React from 'react'
 import GoogleLogin from 'react-google-login'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
-import PlaylistLibrary from './components/PlaylistLibrary/PlaylistLibrary'
 import './App.css'
 
 export default class App extends React.Component {

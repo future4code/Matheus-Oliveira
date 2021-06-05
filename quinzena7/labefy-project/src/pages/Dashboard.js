@@ -39,6 +39,8 @@ const LogoutContainer = styled.div`
     transition: color 0.5s;
     top: 9vh;
     left: 86vw;
+    color: inherit;
+    text-decoration: inherit;
   }
 
   .logout-txt:hover {
@@ -157,17 +159,17 @@ export default class Dashboard extends React.Component {
       case "Dashboard":
     return (
       <DashboardBackground>
-        <img className="background-image-mic" src={BackgroundMic}></img>
+        <img className="background-image-mic" src={BackgroundMic} alt="Microphone"></img>
         <WelcomeContainer>
           <div className="welcome-info">
             <h1 className="fromLeft">Welcome,</h1>
             <NamePhotoContainer>
               <h2 className="fromLeft">{this.props.responseGoogleName}</h2>
-              <img src={this.props.responseGoogleImg}></img>
+              <img src={this.props.responseGoogleImg} alt="User Icon"></img>
             </NamePhotoContainer>
           </div>
         <LogoutContainer>
-          <a className="logout-txt" 
+          <a href="/#" className="logout-txt" 
           onClick={() => this.props.PageChange("Home")}>Logout
           </a>
         </LogoutContainer>

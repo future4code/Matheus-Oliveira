@@ -49,6 +49,8 @@ const SendButtonContainer = styled.div`
     font-size: 42px;
     cursor: pointer;
     transition: 0.3s;
+    color: inherit;
+    text-decoration: inherit;
   }
 
   a:hover {
@@ -98,7 +100,7 @@ export default class CreatePlaylistForm extends React.Component {
       </InputNamePlaylist>
 
       <SendButtonContainer>
-        <a onClick={this.createPlaylist}>❯</a>
+        <a href="/#" onClick={this.createPlaylist}>❯</a>
       </SendButtonContainer>
 
       </div>

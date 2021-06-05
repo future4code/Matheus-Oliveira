@@ -44,7 +44,7 @@ const PlaylistListContainer = styled.div`
   justify-content: space-between;
 `
 
-const PlaylistName = styled.a`
+const PlaylistName = styled.div`
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
@@ -54,6 +54,8 @@ const PlaylistName = styled.a`
 
   a{
     transition: color 0.2s;
+    color: inherit;
+    text-decoration: inherit;
   }
 
   a:hover {
@@ -71,6 +73,8 @@ const ButtonsContainer = styled.div`
     margin-right: 25px;
     margin-bottom: 5px;
     padding: 0 8px;
+    color: inherit;
+    text-decoration: inherit;
   }
   
   a:hover {
@@ -122,16 +126,16 @@ export default class PlaylistLibrary extends React.Component {
     })
     const mapPlaylist = filterPlaylist.map((playlist) => {
       return (
-      <PlaylistListContainer>
+      <PlaylistListContainer key={playlist.id}>
 
         <PlaylistName>
-          <a onClick={() => this.props.goToPlaylistPage(playlist.id, playlist.name)}>
+          <a href="/#" onClick={() => this.props.goToPlaylistPage(playlist.id, playlist.name)}>
           {playlist.name}
           </a>
         </PlaylistName>
 
         <ButtonsContainer key={playlist.id}>
-          <a onClick={() => this.deletePlaylist(playlist.id)}>
+          <a href="/#" onClick={() => this.deletePlaylist(playlist.id)}>
             X
           </a>
         </ButtonsContainer>

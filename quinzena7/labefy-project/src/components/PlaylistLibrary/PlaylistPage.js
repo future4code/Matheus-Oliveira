@@ -109,6 +109,8 @@ const AddTrackArrow = styled.div`
     font-weight: 400;
     color: white;
     cursor: pointer;
+    color: inherit;
+    text-decoration: inherit;
   }
 
   a:hover {
@@ -142,6 +144,8 @@ const TrackTitle = styled.div`
     color: white;
     font-size: 18px;
     font-weight: bold;
+    color: inherit;
+    text-decoration: inherit;
   }
 
   .delete-button:hover {
@@ -185,7 +189,7 @@ export default class PlaylistPage extends React.Component {
         }
       }).then(() => {
         alert("Track successfully added to your playlist")
-        {this.getAllTracks()}
+        this.getAllTracks()
         this.setState({inputMusicName: "", inputArtist: "", inputUrl: ""})
       }).catch(() => {
         alert("No music, artist or url found. Try again")
@@ -215,7 +219,7 @@ export default class PlaylistPage extends React.Component {
             }
           }).then(() => {
               alert('Track deleted!')
-              {this.getAllTracks()}
+              this.getAllTracks()
           }).catch((err) =>{
             alert('Error.', err.data)
           })
@@ -223,7 +227,7 @@ export default class PlaylistPage extends React.Component {
     }
 
     componentDidMount() {
-      {this.getAllTracks()}
+      this.getAllTracks()
     }
   
     render() {
@@ -232,7 +236,7 @@ export default class PlaylistPage extends React.Component {
           <div key={tracks.id}>
             <TrackTitle>
               <h3>{tracks.name}</h3>
-              <a className="delete-button" onClick={() => this.deletePlaylist(tracks.id)}>X</a>
+              <a href="/#" className="delete-button" onClick={() => this.deletePlaylist(tracks.id)}>X</a>
             </TrackTitle>
               <TrackUrl>
                 <ReactPlayer url={tracks.url} controls/>
@@ -244,7 +248,7 @@ export default class PlaylistPage extends React.Component {
     
       return (
         <PlaylistPageContainer>
-          <img className="background-image-guitar" src={BackgroundGuitar}></img>
+          <img className="background-image-guitar" src={BackgroundGuitar} alt="Playing Guitar"></img>
           <PlaylistTitle>
             <h1 className="fromLeft">{this.props.selectedPlaylistName}</h1>
           </PlaylistTitle>
@@ -269,12 +273,12 @@ export default class PlaylistPage extends React.Component {
             </input>
           </InputsTrackForm>
           <AddTrackArrow>
-            <a onClick={() => this.addTrackPlaylist()}>
+            <a href="/#" onClick={() => this.addTrackPlaylist()}>
             +
             </a>
           </AddTrackArrow>
 
-          <a className="back-button" onClick={() => this.props.LibraryToPlaylistPage("Dashboard")}>
+          <a href="/#" className="back-button" onClick={() => this.props.LibraryToPlaylistPage("Dashboard")}>
             «
           </a>
           
