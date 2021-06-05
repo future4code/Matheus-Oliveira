@@ -28,9 +28,10 @@ const InputSearchContainer = styled.div`
     border: none;
     border-bottom: 1px solid #FC6D6D;
     outline: none;
-    background-color: #111;
+    background-color: transparent;
     color: white;
     font-size: 18px;
+    
   }
 
   input::placeholder {

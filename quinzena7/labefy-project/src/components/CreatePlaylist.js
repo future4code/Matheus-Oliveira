@@ -6,12 +6,25 @@ const CreateContainer = styled.div`
   position: absolute;
   left: 200px;
   top: 460px;
+  z-index: 2;
+
+  h1:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #FC6D6D;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+  h1:hover:after { transform: scaleX(1); }
+  h1.fromLeft:after{  transform-origin: 0% 50% ; }
 `
 
 const InputNamePlaylist = styled.div`
   position: absolute;
   left: 300px;
   bottom: 360px;
+  z-index: 2;
 
   input {
     height: 35px;
@@ -19,7 +32,7 @@ const InputNamePlaylist = styled.div`
     border: none;
     border-bottom: 1px solid #FC6D6D;
     outline: none;
-    background-color: #111;
+    background-color: transparent;
     color: white;
     font-weight: bold;
     font-size: 22px;
@@ -30,13 +43,14 @@ const SendButtonContainer = styled.div`
   position: absolute;
   left: 530px;
   bottom: 345px;
+  z-index: 2;
 
   a {
     font-size: 42px;
     cursor: pointer;
     transition: 0.3s;
   }
-  
+
   a:hover {
     color: #FC6D6D;
     transition: 0.3s;
@@ -76,7 +90,7 @@ export default class CreatePlaylistForm extends React.Component {
       <div>
 
       <CreateContainer>
-        <h1>Create your Playlist here!</h1>
+        <h1 className="fromLeft">Create your Playlist here!</h1>
       </CreateContainer>
 
       <InputNamePlaylist>

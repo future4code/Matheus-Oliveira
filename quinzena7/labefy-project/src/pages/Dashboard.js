@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
+import BackgroundMic from '../assets/images/background-mic.jpeg'
 import CreatePlaylist from '../components/CreatePlaylist'
 import PlaylistLibrary from '../components/PlaylistLibrary/PlaylistLibrary'
 import PlaylistPage from '../components/PlaylistLibrary/PlaylistPage'
@@ -10,6 +11,18 @@ const DashboardBackground = styled.div`
   height: 100vh;
   color: white;
 
+  .background-image-mic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    z-index: 0;
+    opacity: 0.25;
+  }
+
   .logout-txt {
     position: absolute;
     font-size: 18px;
@@ -18,6 +31,8 @@ const DashboardBackground = styled.div`
     right: -1350px;
     top: 1px;
     transition: 0.5s;
+    z-index: 2;
+    
   }
 
   .logout-txt:hover {
@@ -32,7 +47,7 @@ const WelcomeContainer = styled.div`
   top: 90px;
   display: inline-block;
   margin: 0;
-  z-index: 1;
+  z-index: 2;
 
   h1:after {
   display:block;
@@ -62,6 +77,7 @@ const NamePhotoContainer = styled.div`
   position: absolute;
   left: 62%;
   top: 38%;
+  z-index: 2;
 
   img {
     padding-left: 20px;
@@ -82,7 +98,6 @@ const DashboardTitle = styled.div`
   padding-top: 350px;
   text-transform: uppercase;
   font-size: 26px;
-  z-index: 0;
 
   h2:after {
   display:block;
@@ -94,7 +109,6 @@ const DashboardTitle = styled.div`
 
 h2:hover:after { transform: scaleX(1); }
 `
-
 
 export default class Dashboard extends React.Component {
   state = {
@@ -133,7 +147,7 @@ export default class Dashboard extends React.Component {
       case "Dashboard":
     return (
       <DashboardBackground>
-
+        <img className="background-image-mic" src={BackgroundMic}></img>
         <WelcomeContainer>
           <h1 className="fromLeft">Welcome,</h1>
         <NamePhotoContainer>
