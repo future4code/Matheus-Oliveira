@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import BackgroundMic from '../assets/images/background-mic.jpeg'
+import UserIcon from '../assets/images/user.svg'
 import CreatePlaylist from '../components/CreatePlaylist'
 import PlaylistLibrary from '../components/PlaylistLibrary/PlaylistLibrary'
 import PlaylistPage from '../components/PlaylistLibrary/PlaylistPage'
@@ -87,8 +88,8 @@ const NamePhotoContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  left: 62%;
-  top: 38%;
+  left: 7vw;
+  top: 3vh;
   z-index: 2;
 
   img {
@@ -96,6 +97,7 @@ const NamePhotoContainer = styled.div`
     border-radius: 50%;
     transform: scale(1);
     transition: 0.5s;
+    height: 85px;
   }
 
   img:hover {
@@ -172,8 +174,8 @@ export default class Dashboard extends React.Component {
           <div className="welcome-info">
             <h1 className="fromLeft">Welcome,</h1>
             <NamePhotoContainer>
-              <h2 className="fromLeft">{this.props.responseGoogleName}</h2>
-              <img src={this.props.responseGoogleImg} alt="User Icon"></img>
+              <h2 className="fromLeft">User</h2>
+              <img src={UserIcon} alt="User Icon"></img>
             </NamePhotoContainer>
           </div>
         <LogoutContainer>

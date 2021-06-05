@@ -1,24 +1,35 @@
 import React from 'react'
-import GoogleLogin from 'react-google-login'
 import Dashboard from './pages/Dashboard'
 import Home from './pages/Home'
 import './App.css'
+import styled from 'styled-components';
+
+const LoginContainer = styled.a`
+  position: absolute;
+  left: 86.5vw;
+  top: 9vh;
+  z-index: 2;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+
+  a:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #FC6D6D;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+  a:hover:after { transform: scaleX(1); }
+  a.fromLeft:after{  transform-origin: 0% 50% ; }
+`
 
 export default class App extends React.Component {
   state = {
     page: "Home",
-    responseGoogleName: null,
-    responseGoogleImg: null,
-  }
-
-  responseGoogle = (response) => {
-    if(response) {
-      this.PageChange("Dashboard")
-      this.setState({ responseGoogleName: response.profileObj.givenName })
-      this.setState({ responseGoogleImg: response.profileObj.imageUrl })
-    } else {
-      this.props.PageChange("Home")
-    }
   }
 
   PageChange = (page) => {
@@ -35,22 +46,18 @@ export default class App extends React.Component {
             <Home 
             PageChange={this.PageChange}
             />
-            <GoogleLogin
-              className="google-button"
-              clientId="824766333517-38plugusncen1bdcck8q529tqdpihjh8.apps.googleusercontent.com"
-              buttonText="Login"
-              onSuccess={this.responseGoogle}
-              onFailure={this.responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
+            <LoginContainer>
+              <a
+              onClick={() => this.PageChange("Dashboard")}>
+              Login
+              </a>
+            </LoginContainer>
           </div>
         )
       case "Dashboard":
         return (
           <Dashboard
           PageChange={this.PageChange}
-          responseGoogleName={this.state.responseGoogleName}
-          responseGoogleImg={this.state.responseGoogleImg}
           />
         )
       default:
