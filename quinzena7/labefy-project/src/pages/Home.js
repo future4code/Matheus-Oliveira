@@ -16,6 +16,14 @@ const BackgroundBody = styled.div`
     z-index: 2;
     font-size: 26px;
     color: white;
+
+    @media(max-width: 375px) {
+      width: 100%;
+      padding: 80px 100px;
+      z-index: 2;
+      font-size: 26px;
+      color: white;
+    }
   }
   
   .background-video {
@@ -26,6 +34,11 @@ const BackgroundBody = styled.div`
     height: 100%;
     object-fit: cover;
     z-index: 0;
+
+    @media(max-width: 375px) {
+      width: 203vw;
+      height: 203vh;
+    }
   }
 
   h2 {

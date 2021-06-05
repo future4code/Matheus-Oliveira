@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 const CreateContainer = styled.div`
   position: absolute;
-  left: 200px;
-  top: 460px;
+  top: 47vh;
+  left: 10vw;
   z-index: 2;
 
   h1:after {
@@ -21,12 +21,12 @@ const CreateContainer = styled.div`
 `
 
 const InputNamePlaylist = styled.div`
-  position: absolute;
-  left: 300px;
-  bottom: 360px;
   z-index: 2;
 
   input {
+    position: absolute;
+    top: 59.8vh;
+    right: 73vw;
     height: 35px;
     width: 200px;
     border: none;
@@ -40,22 +40,22 @@ const InputNamePlaylist = styled.div`
 `
 
 const SendButtonContainer = styled.div`
-  position: absolute;
-  left: 530px;
-  bottom: 345px;
   z-index: 2;
 
   a {
+    position: fixed;
+    top: 58.5vh;
+    left: 28vw;
     font-size: 42px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: color 0.3s;
     color: inherit;
     text-decoration: inherit;
   }
 
   a:hover {
     color: #FC6D6D;
-    transition: 0.3s;
+    transition: color 0.3s;
   }
 `
 
@@ -78,12 +78,12 @@ export default class CreatePlaylistForm extends React.Component {
         headers: {
           Authorization: 'matheus-rodrigues-munoz'
         }
-      }).then((res) => {
-        alert("Playlist successfully created", res)
+      }).then(() => {
+        alert("Playlist successfully created")
           this.setState({ inputNameValue: "" })
           this.props.getAllPlaylists()
-      }).catch((err) => {
-          alert("Error", err.data)
+      }).catch(() => {
+          alert("Error")
       })
     }
 

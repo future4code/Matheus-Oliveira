@@ -23,6 +23,7 @@ const PlaylistPageContainer = styled.div`
     opacity: 0.9;
     z-index: 0;
     opacity: 0.25;
+    display: block;
   }
 
   h1 {
@@ -34,9 +35,20 @@ const PlaylistPageContainer = styled.div`
 
   h2 {
     position: absolute;
-    left: 45.4vw;
+    right: 45.4vw;
     top: 38vh;
     color: white;
+
+    @media(max-width: 1280px) {
+      right: 43vw;
+      top: 40vh;
+  }
+
+    @media(max-width: 1366px) {
+        right: 43vw;
+        top: 40vh;
+    }
+
   }
 
   h3 {
@@ -67,8 +79,8 @@ const PlaylistPageContainer = styled.div`
 
   .back-button {
     position: absolute;
-    left: 150px;
-    top: 88px;
+    right: 85vw;
+    top: 10vh;
     color: white;
     font-size: 62px;
     cursor: pointer;
@@ -105,15 +117,25 @@ const PlaylistTitle = styled.div`
 `
 
 const AddTrackArrow = styled.div`
-  position: absolute;
-  left: 58%;
-  bottom: 66.6%;
   color: white;
 
   a {
+    position: absolute;
+    top: 25.5vh;
+    left: 59vw;
     font-size: 48px;
     font-weight: 400;
     cursor: pointer;
+
+    @media(max-width: 1280px) {
+      top: 28vh;
+      left: 62vw;
+  }
+
+    @media(max-width: 1366px) {
+        top: 29vh;
+        left: 61.3vw;
+    }
   }
 
   a:hover {
@@ -124,29 +146,70 @@ const AddTrackArrow = styled.div`
 const InputsTrackForm = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 40px;
+  position: absolute;
+  right: 42.5vw;
+
+  @media(max-width: 1280px) {
+    padding-top: 10px;
+    right: 40vw;
+  }
+
+  @media(max-width: 1366px) {
+    padding-top: 10px;
+    right: 40vw;
+  }
 `
 
 const TracksForm = styled.div`
   position: absolute;
-  left: 32%;
-  top: 45%;
+  right: 30vw;
+  top: 45vh;
   overflow-y: scroll;
   max-height: 55vh;
   width: 690px;
+
+  @media(max-width: 1280px) {
+    right: 20vw;
+    top: 45vh;
+  }
+
+  @media(max-width: 1366px) {
+    right: 22vw;
+    top: 45vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #FC6D6D;
+  } 
 `
 
 const TrackTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-right: 32px;
+  padding-right: 2.2vw;
+  font-size: 18px;
+
+  @media(max-width: 1280px) {
+    padding-right: 3vw;
+    font-size: 16px;
+  }
+
+  @media(max-width: 1366px) {
+    padding-right: 3.5vw;
+    font-size: 16px;
+  }
 
   .delete-button {
     cursor: pointer;
     color: white;
-    font-size: 18px;
     font-weight: bold;
+    
   }
 
   .delete-button:hover {
@@ -154,7 +217,7 @@ const TrackTitle = styled.div`
   }
 `
 const TrackUrl = styled.div`
-  padding-bottom: 22px;
+  padding-bottom: 5vh;
 `
 
 export default class PlaylistPage extends React.Component {
@@ -240,10 +303,12 @@ export default class PlaylistPage extends React.Component {
               <a href="/#" className="delete-button" onClick={() => this.deletePlaylist(tracks.id)}>X</a>
             </TrackTitle>
               <TrackUrl>
-                <ReactPlayer url={tracks.url} controls/>
+                <ReactPlayer 
+                  className="react-player" 
+                  url={tracks.url}
+                  controls/>
               </TrackUrl>
           </div>
-          
       )
     })
     

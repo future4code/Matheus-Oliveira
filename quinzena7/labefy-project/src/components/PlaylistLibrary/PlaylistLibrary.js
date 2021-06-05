@@ -4,34 +4,68 @@ import styled from 'styled-components'
 
 const LibraryContainer = styled.div`
   position: absolute;
-  right: 250px;
-  top: 460px;
+  top: 47vh;
+  left: 71vw;
+
+  h1:after {
+    display:block;
+    content: '';
+    border-bottom: solid 1px #FC6D6D;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+  h1:hover:after { transform: scaleX(1); }
+  h1.fromLeft:after{  transform-origin:  0% 50%; }
 `
 
 const PlaylistContainer = styled.div`
   position: absolute;
-  right: 100px;
-  top: 555px;
-  max-height: 350px;
-  width: 500px;
+  top: 60vh;
+  left: 66vw;
+  max-height: 35vh;
+  width: 25vw;
   overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #FC6D6D;
+  } 
 `
 
 const InputSearchContainer = styled.div`
   position: absolute;
-  right: 336px;
-  top: 515px;
+  top: 55vh;
+  left: 66vw;
   
+  @media(max-width: 1280px) {
+    top: 54vh;
+  }
+
+  @media(max-width: 1366px) {
+    top: 54vh;
+  }
+
   input {
-    font-size: 14px;
     font-weight: bold;
     border: none;
     border-bottom: 1px solid #FC6D6D;
     outline: none;
     background-color: transparent;
-    color: white;
     font-size: 18px;
-    
+    color: white;
+
+    @media(max-width: 1280px) {
+      width: 16.5vw;
+  }
+
+    @media(max-width: 1366px) {
+      width: 16.5vw;
+    }
   }
 
   input::placeholder {
@@ -99,7 +133,7 @@ export default class PlaylistLibrary extends React.Component {
   }
 
   deletePlaylist = (playlistId) => {
-    if( window.confirm("Do you really want to delete your playlist?")) {
+    if( window.confirm(`Do you really want to delete this playlist?`)) {
       const deletePlaylist = playlistId
         axios
           .delete(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${deletePlaylist}`, {
@@ -107,11 +141,10 @@ export default class PlaylistLibrary extends React.Component {
               Authorization: 'matheus-rodrigues-munoz'
             }
           }).then(() => {
-            alert('Playlist deleted!')
             this.props.getAllPlaylists()
             }
-          ).catch((err) =>{
-            alert('Error.', err.data)
+          ).catch(() =>{
+            alert('Error.')
           })
     }
   }

@@ -62,11 +62,11 @@ const WelcomeContainer = styled.div`
   }
 
   h1:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #FC6D6D;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
+    display:block;
+    content: '';
+    border-bottom: solid 1px #FC6D6D;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
 }
 
   h2:after {
@@ -110,6 +110,14 @@ const DashboardTitle = styled.div`
   padding-top: 330px;
   text-transform: uppercase;
   font-size: 26px;
+
+  @media(max-width: 1280px) {
+    padding-top: 250px;
+  }
+
+  @media(max-width: 1366px) {
+    padding-top: 250px;
+  }
 
   h2:after {
   display:block;
