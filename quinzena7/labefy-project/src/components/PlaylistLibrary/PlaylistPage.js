@@ -8,6 +8,11 @@ const PlaylistPageContainer = styled.div`
   background-color: #111;
   height: 100vh;
 
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
   .background-image-guitar {
     position: absolute;
     top: 0;
@@ -103,14 +108,12 @@ const AddTrackArrow = styled.div`
   position: absolute;
   left: 58%;
   bottom: 66.6%;
+  color: white;
 
   a {
     font-size: 48px;
     font-weight: 400;
-    color: white;
     cursor: pointer;
-    color: inherit;
-    text-decoration: inherit;
   }
 
   a:hover {
@@ -144,8 +147,6 @@ const TrackTitle = styled.div`
     color: white;
     font-size: 18px;
     font-weight: bold;
-    color: inherit;
-    text-decoration: inherit;
   }
 
   .delete-button:hover {
