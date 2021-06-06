@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import './App.css'
 import styled from 'styled-components';
 
-const LoginContainer = styled.a`
+const LoginContainer = styled.div`
   position: absolute;
   left: 86.5vw;
   top: 9vh;
@@ -14,6 +14,11 @@ const LoginContainer = styled.a`
   font-weight: bold;
   cursor: pointer;
   transition: color 0.3s;
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 
   @media(max-width: 375px) {
     left: 160vw;
@@ -35,7 +40,7 @@ const LoginContainer = styled.a`
 
 export default class App extends React.Component {
   state = {
-    page: "Dashboard",
+    page: "Home",
   }
 
   PageChange = (page) => {
@@ -53,7 +58,8 @@ export default class App extends React.Component {
             PageChange={this.PageChange}
             />
             <LoginContainer>
-              <a
+              <a 
+              href="/#"
               onClick={() => this.PageChange("Dashboard")}>
               Login
               </a>
