@@ -34,7 +34,7 @@ const LogoutContainer = styled.div`
   transition: 0.5s;
   z-index: 2;
   width: 100%;
-
+  
   .logout-txt {
     position: fixed;
     transition: color 0.5s;
@@ -42,6 +42,12 @@ const LogoutContainer = styled.div`
     left: 86vw;
     color: inherit;
     text-decoration: inherit;
+
+    @media(max-width: 375px) {
+      top: 2vh;
+      left: 82vw;
+      font-size: 12px;
+    }
   }
 
   .logout-txt:hover {
@@ -60,6 +66,13 @@ const WelcomeContainer = styled.div`
     position: fixed;
     left: 15vw;
     top: 10vh;
+
+    @media(max-width: 375px) {
+      left: 12vw;
+      top: 5vh;
+      font-size: 14px;
+    }
+
   }
 
   h1:after {
@@ -92,6 +105,19 @@ const NamePhotoContainer = styled.div`
   top: 3vh;
   z-index: 2;
 
+  @media(max-width: 1280px) {
+    left: 9vw;
+  }
+
+  @media(max-width: 1366px) {
+    left: 10vw;
+  }
+
+  @media(max-width: 375px) {
+    left: 30vw;
+    top: 2vh;
+  }
+
   img {
     padding-left: 20px;
     border-radius: 50%;
@@ -119,6 +145,11 @@ const DashboardTitle = styled.div`
 
   @media(max-width: 1366px) {
     padding-top: 250px;
+  }
+
+  @media(max-width: 375px) {
+    padding-top: 145px;
+    font-size: 20px;
   }
 
   h2:after {

@@ -7,6 +7,12 @@ const LibraryContainer = styled.div`
   top: 47vh;
   left: 71vw;
 
+  @media(max-width: 375px) {
+    top: 46vh;
+    left: 25vw;
+    font-size: 12px;
+  }
+
   h1:after {
     display:block;
     content: '';
@@ -27,6 +33,13 @@ const PlaylistContainer = styled.div`
   width: 25vw;
   overflow-y: scroll;
 
+  @media(max-width: 375px) {
+    top: 62vh;
+    left: 25vw;
+    max-height: 35vh;
+    width: 55vw;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -39,15 +52,19 @@ const PlaylistContainer = styled.div`
 
 const InputSearchContainer = styled.div`
   position: absolute;
-  top: 55vh;
+  bottom: 42vh;
   left: 66vw;
+
+  @media(max-width: 375px) {
+    left: 25vw;
+  }
   
   @media(max-width: 1280px) {
-    top: 54vh;
+    bottom: 42vh;
   }
 
   @media(max-width: 1366px) {
-    top: 54vh;
+    bottom: 42vh;
   }
 
   input {
@@ -59,12 +76,8 @@ const InputSearchContainer = styled.div`
     font-size: 18px;
     color: white;
 
-    @media(max-width: 1280px) {
-      width: 16.5vw;
-  }
-
-    @media(max-width: 1366px) {
-      width: 16.5vw;
+    @media(max-width: 375px) {
+      font-size: 14px;
     }
   }
 
@@ -109,6 +122,10 @@ const ButtonsContainer = styled.div`
     padding: 0 8px;
     color: inherit;
     text-decoration: inherit;
+
+    @media(max-width: 375px) {
+      margin-right: 10px;
+    }
   }
   
   a:hover {

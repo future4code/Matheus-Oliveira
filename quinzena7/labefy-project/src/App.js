@@ -15,6 +15,12 @@ const LoginContainer = styled.a`
   cursor: pointer;
   transition: color 0.3s;
 
+  @media(max-width: 375px) {
+    left: 160vw;
+    top: 25vh;
+    font-size: 26px;
+    }
+
   a:after {
   display:block;
   content: '';
@@ -29,7 +35,7 @@ const LoginContainer = styled.a`
 
 export default class App extends React.Component {
   state = {
-    page: "Home",
+    page: "Dashboard",
   }
 
   PageChange = (page) => {

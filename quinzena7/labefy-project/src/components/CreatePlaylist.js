@@ -8,6 +8,11 @@ const CreateContainer = styled.div`
   left: 10vw;
   z-index: 2;
 
+  @media(max-width: 375px) {
+    top: 30vh;
+    font-size: 12px;
+  }
+
   h1:after {
   display:block;
   content: '';
@@ -36,6 +41,14 @@ const InputNamePlaylist = styled.div`
     color: white;
     font-weight: bold;
     font-size: 22px;
+
+    @media(max-width: 375px) {
+      top: 38vh;
+      right: 37vw;
+      height: 25px;
+      width: 120px;
+      font-size: 12px;
+    }
   }
 `
 
@@ -51,6 +64,12 @@ const SendButtonContainer = styled.div`
     transition: color 0.3s;
     color: inherit;
     text-decoration: inherit;
+
+    @media(max-width: 375px) {
+      top: 36.7vh;
+      left: 65vw;
+      font-size: 30px;
+    }
   }
 
   a:hover {
