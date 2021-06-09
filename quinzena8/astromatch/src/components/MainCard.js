@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import AstromatchLogo from '../assets/images/astromatchlogo.png'
 
@@ -29,14 +29,44 @@ const CardHead = styled.div`
 `
 
 export default function MainCard() {
+  const [Page, setPage] = useState("ChoosePage")
+
+  const pageChange = (page) => {
+      setPage(page)
+  }
+
+  const renderPage = () => {
+    switch (Page) {
+      case "ChoosePage":
+        return (
+          <CardPosition>
+            <CardSize>
+              <CardHead>
+                <img src={AstromatchLogo} />
+                <button onClick={() => pageChange("MatchPage")}>1</button>
+              </CardHead>
+            </CardSize>
+          </CardPosition>
+        )
+      case "MatchPage":
+        return (
+          <CardPosition>
+            <CardSize>
+              <CardHead>
+                <img src={AstromatchLogo} />
+                <div>2</div>
+              </CardHead>
+            </CardSize>
+          </CardPosition>
+        )
+      default:
+        return <h1>Page not found</h1>
+    }
+  };
+
   return (
-    <CardPosition>
-      <CardSize>
-        <CardHead>
-          <img src={AstromatchLogo} />
-          <div>1</div>
-        </CardHead>
-      </CardSize>
-    </CardPosition>
+      <div>
+        {renderPage()}
+      </div>
   )
 }
