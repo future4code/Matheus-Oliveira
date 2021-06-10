@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import MatchPage from '../components/MatchPage'
+import YourMatches from '../components/YourMatches'
 import styled from 'styled-components'
 import AstromatchLogo from '../assets/images/astromatchlogo.png'
 
@@ -11,8 +13,8 @@ const CardPosition = styled.div`
 const CardSize = styled.div`
   border: 1px solid black;
   border-radius: 4px;
-  height: 400px;
-  width: 265px;
+  height: 600px;
+  width: 400px;
   background-color: #FFF;
 `
 const CardHead = styled.div`
@@ -20,11 +22,11 @@ const CardHead = styled.div`
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #d3d3d3;
-  height: 34px;
+  height: 50px;
 
   img {
-    height: 32px;
-    width: 99px;
+    height: 50px;
+    width: 148px;
   }
 `
 
@@ -43,7 +45,6 @@ export default function MainCard() {
             <CardSize>
               <CardHead>
                 <img src={AstromatchLogo} />
-                <button onClick={() => pageChange("MatchPage")}>1</button>
               </CardHead>
             </CardSize>
           </CardPosition>

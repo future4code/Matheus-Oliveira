@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import GlobalStyle from './themes/globalStyle'
-import MainCard from './components/MainCard'
+import MainCard from './pages/MainCard'
 
 export default function App() {
   return (

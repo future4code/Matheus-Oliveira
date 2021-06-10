@@ -4,8 +4,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: teal;
+    background: #008080;
   }
 `
- 
+
 export default GlobalStyle
