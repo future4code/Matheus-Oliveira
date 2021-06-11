@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
-import { BASE_URL } from '../constants/urls'
-import { NAME_URL } from '../constants/name'
+import {API_BASE, API_NAME} from '../constants/API_Astromatch'
 
 export default function MatchPage() {
 
   const getallusers = () => {
     axios
-      .get(`${BASE_URL}${NAME_URL}/person`)
+      .get(`${API_BASE}${API_NAME}/person`)
       .then(res => { console.log(res.data) })
       .catch(err => { console.log(err); });
   }
