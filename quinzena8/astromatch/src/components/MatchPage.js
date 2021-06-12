@@ -53,35 +53,49 @@ const SelectButtons = styled.div`
 
 export default function MatchPage() {
   const [profiles, setProfiles] = useState({})
-  const [choose, setChoose] = useState([])
+  const [choose, setChoose] = useState({})
+  const [choice, setChoice] = useState(null)
 
   useEffect(() => {
     axios
       .get(`${API_BASE}${API_NAME}/person`)
-      .then(res => { setProfiles(res.data.profile) })
+      .then(res => {
+        setProfiles(res.data.profile)
+        setChoose(res.data.profile.id)
+      })
+      .catch(err => { })
+
+    axios
+      .post(`${API_BASE}${API_NAME}/choose-person`)
+      .then(res => {
+        setChoose(choice)
+      })
       .catch(err => { })
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(`${API_BASE}${API_NAME}/choose-person`)
-      .then(res => { setChoose(res.data.profile.id) })
-      .catch(err => { })
-  }, []);
+  const getTrueByUser = () => {
+    setChoice(true)
+  }
+
+  const getFalseByUser = () => {
+    setChoice(false)
+  }
 
   return (
     <ProfilePositon>
       <ProfilePhoto style={{
         backgroundSize: `cover`,
-        backgroundPosition:`center`,
-        backgroundImage:`url(${profiles.photo})`}}>
-          <div></div>
-          <h2>{profiles.name}, {profiles.age}</h2>
-          <p>{profiles.bio}</p>
+        backgroundPosition: `center`,
+        backgroundImage: `url(${profiles.photo})`
+      }}>
+        <div></div>
+        <h2>{profiles.name}, {profiles.age}</h2>
+        <p>{profiles.bio}</p>
+        {console.log(choose.id)}
       </ProfilePhoto>
       <SelectButtons>
-        <button>X</button>
-        <button>S2</button>
+        <button onClick={getFalseByUser}>X</button>
+        <button onClick={getTrueByUser}>S2</button>
       </SelectButtons>
     </ProfilePositon>
   )
