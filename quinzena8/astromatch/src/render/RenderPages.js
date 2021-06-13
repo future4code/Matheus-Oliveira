@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
-import MatchPage from '../components/MatchPage'
-import YourMatch from '../components/YourMatch'
+import React, { useState, useEffect } from 'react'
+import ChoiceSection from '../sections/ChoiceSection'
+import MatchSection from '../sections/MatchSection'
+import ChatSection from '../sections/ChatSection'
 import styled from 'styled-components'
+import axios from 'axios'
+import { API_BASE, API_NAME } from '../constants/API_Astromatch'
 import AstromatchLogo from '../assets/images/astromatchlogo.png'
 
 const CardPosition = styled.div`
@@ -38,7 +41,15 @@ const HeadGhostItem = styled.div`
 `
 
 export default function MainCard() {
-  const [Page, setPage] = useState("MatchPage")
+  const [Page, setPage] = useState("ChoiceSection")
+  const [matches, setMatches] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE}${API_NAME}/matches`)
+      .then(res => { setMatches(res.data.matches) })
+      .catch(err => { });
+  }, [matches]);
 
   const pageChange = (page) => {
     setPage(page)
@@ -46,20 +57,26 @@ export default function MainCard() {
 
   const renderHead = () => {
     switch (Page) {
-      case "MatchPage":
+      case "ChoiceSection":
         return (
           <>
             <HeadGhostItem />
             <img src={AstromatchLogo} alt="Astromatch Logo" />
-            <button onClick={() => pageChange("YourMatch")}>1</button>
+            <button onClick={() => pageChange("MatchSection")}>1</button>
           </>
         )
-      case "YourMatch":
+      case "MatchSection":
         return (
           <>
-            <button onClick={() => pageChange("MatchPage")}>2</button>
+            <button onClick={() => pageChange("ChoiceSection")}>2</button>
             <img src={AstromatchLogo} alt="Astromatch Logo" />
             <HeadGhostItem />
+          </>
+        )
+      case "ChatSection":
+        return (
+          <>
+            <button onClick={() => pageChange("MatchSection")}>3</button>
           </>
         )
       default:
@@ -69,16 +86,25 @@ export default function MainCard() {
 
   const renderPage = () => {
     switch (Page) {
-      case "MatchPage":
+      case "ChoiceSection":
         return (
           <>
-            <MatchPage></MatchPage>
+            <ChoiceSection></ChoiceSection>
           </>
         )
-      case "YourMatch":
+      case "MatchSection":
         return (
           <>
-            <YourMatch></YourMatch>
+            <MatchSection
+              matches={matches}
+              pageChange={pageChange}>
+            </MatchSection>
+          </>
+        )
+      case "ChatSection":
+        return (
+          <>
+            <ChatSection matches={matches}></ChatSection>
           </>
         )
       default:

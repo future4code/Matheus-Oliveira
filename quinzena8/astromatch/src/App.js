@@ -1,12 +1,12 @@
 import React from 'react';
 import GlobalStyle from './themes/globalStyle'
-import MainCard from './pages/MainCard'
+import RenderPages from './render/RenderPages'
 
 export default function App() {
   return (
     <>
       <GlobalStyle></GlobalStyle>
-      <MainCard></MainCard>
+      <RenderPages></RenderPages>
     </>
   )
 }

@@ -51,7 +51,7 @@ const SelectButtons = styled.div`
   padding: 0 10px;
 `
 
-export default function MatchPage() {
+export default function ChoiceSection() {
   const [profiles, setProfiles] = useState({})
   const [choose, setChoose] = useState(null)
 
