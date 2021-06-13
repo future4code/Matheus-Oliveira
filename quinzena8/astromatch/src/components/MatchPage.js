@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { API_BASE, API_NAME } from '../constants/API_Astromatch'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const ProfilePositon = styled.div`
   padding-top: 20px;
@@ -53,32 +53,34 @@ const SelectButtons = styled.div`
 
 export default function MatchPage() {
   const [profiles, setProfiles] = useState({})
-  const [choose, setChoose] = useState({})
-  const [choice, setChoice] = useState(null)
+  const [choose, setChoose] = useState(null)
 
   useEffect(() => {
-    axios
-      .get(`${API_BASE}${API_NAME}/person`)
-      .then(res => {
-        setProfiles(res.data.profile)
-        setChoose(res.data.profile.id)
-      })
-      .catch(err => { })
+    if (choose === null) {
+      axios
+        .get(`${API_BASE}${API_NAME}/person`)
+        .then(res => { 
+          setProfiles(res.data.profile)
+         })
+        .catch(() => {  })
+    }
+  }, [choose]);
 
-    axios
-      .post(`${API_BASE}${API_NAME}/choose-person`)
-      .then(res => {
-        setChoose(choice)
-      })
-      .catch(err => { })
-  }, []);
+  useEffect(() => {
+    if (choose === true || choose === false) {
+      const body = {
+        id: profiles.id,
+        choice: choose
+      }
+      axios
+        .post(`${API_BASE}${API_NAME}/choose-person`, body)
+        .then(() => { setChoose(null) })
+        .catch(() => { })
+    }
+  }, [choose, profiles.id]);
 
-  const getTrueByUser = () => {
-    setChoice(true)
-  }
-
-  const getFalseByUser = () => {
-    setChoice(false)
+  const chosenByUser = (value) => {
+    setChoose(value)
   }
 
   return (
@@ -91,11 +93,10 @@ export default function MatchPage() {
         <div></div>
         <h2>{profiles.name}, {profiles.age}</h2>
         <p>{profiles.bio}</p>
-        {console.log(choose.id)}
       </ProfilePhoto>
       <SelectButtons>
-        <button onClick={getFalseByUser}>X</button>
-        <button onClick={getTrueByUser}>S2</button>
+        <button onClick={() => chosenByUser(false)}>X</button>
+        <button onClick={() => chosenByUser(true)}>S2</button>
       </SelectButtons>
     </ProfilePositon>
   )

@@ -50,7 +50,7 @@ export default function MainCard() {
         return (
           <>
             <HeadGhostItem />
-            <img src={AstromatchLogo} />
+            <img src={AstromatchLogo} alt="Astromatch Logo" />
             <button onClick={() => pageChange("YourMatch")}>1</button>
           </>
         )
@@ -58,7 +58,7 @@ export default function MainCard() {
         return (
           <>
             <button onClick={() => pageChange("MatchPage")}>2</button>
-            <img src={AstromatchLogo} />
+            <img src={AstromatchLogo} alt="Astromatch Logo" />
             <HeadGhostItem />
           </>
         )
