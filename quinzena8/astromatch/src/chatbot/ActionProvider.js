@@ -4,9 +4,14 @@ export default class ActionProvider {
     this.setState = setStateFunc
   }
 
-  greet = () => {
-    const message = this.createChatBotMessage("ola")
-    this.addMessageToState(message);
+  answerToHi = () => {
+    const message = this.createChatBotMessage("Olá, tudo bem com você?")
+    this.addMessageToState(message)
+  }
+
+  answerToYes = () => {
+    const message = this.createChatBotMessage("Olá, tudo bem com você?")
+    this.addMessageToState(message)
   }
 
   addMessageToState = (message) => {

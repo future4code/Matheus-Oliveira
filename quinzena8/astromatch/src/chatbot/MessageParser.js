@@ -1,16 +1,13 @@
-class MessageParser {
+export default class MessageParser {
   constructor(actionProvider) {
-    this.actionProvider = actionProvider;
+    this.actionProvider = actionProvider
   }
 
   parse(message) {
-    const lowercase = message.toLowerCase();
+    const lowercase = message.toLowerCase()
 
-    if (lowercase.includes("olá")) {
-      this.actionProvider.greet();
+    if (lowercase.includes("oi" || "ola")) {
+      this.actionProvider.answerToHi()
     }
   }
 }
-
-export default MessageParser;
-

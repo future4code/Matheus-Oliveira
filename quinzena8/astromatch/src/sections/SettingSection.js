@@ -10,7 +10,7 @@ export default function SettingSection() {
       if (window.confirm("Você realmente quer resetar todos seus matches?")) {
       axios
         .put(`${API_BASE}${API_NAME}/clear`)
-        .then(res => { console.log(res.data) })
+        .then(() => { })
         .catch(() => { })
       }
     }
