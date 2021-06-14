@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ChoiceSection from '../sections/ChoiceSection'
 import MatchSection from '../sections/MatchSection'
 import ChatSection from '../sections/ChatSection'
+import SettingSection from '../sections/SettingSection'
 import styled from 'styled-components'
 import axios from 'axios'
 import { API_BASE, API_NAME } from '../constants/API_Astromatch'
@@ -42,14 +43,6 @@ const HeadGhostItem = styled.div`
 
 export default function MainCard() {
   const [Page, setPage] = useState("ChoiceSection")
-  const [matches, setMatches] = useState([])
-
-  useEffect(() => {
-    axios
-      .get(`${API_BASE}${API_NAME}/matches`)
-      .then(res => { setMatches(res.data.matches) })
-      .catch(err => { });
-  }, [matches]);
 
   const pageChange = (page) => {
     setPage(page)
@@ -70,13 +63,23 @@ export default function MainCard() {
           <>
             <button onClick={() => pageChange("ChoiceSection")}>2</button>
             <img src={AstromatchLogo} alt="Astromatch Logo" />
-            <HeadGhostItem />
+            <button onClick={() => pageChange("SettingSection")}>4</button>
           </>
         )
       case "ChatSection":
         return (
           <>
             <button onClick={() => pageChange("MatchSection")}>3</button>
+            <img src={AstromatchLogo} alt="Astromatch Logo" />
+            <HeadGhostItem />
+          </>
+        )
+      case "SettingSection":
+        return (
+          <>
+            <button onClick={() => pageChange("MatchSection")}>5</button>
+            <img src={AstromatchLogo} alt="Astromatch Logo" />
+            <HeadGhostItem />
           </>
         )
       default:
@@ -96,7 +99,6 @@ export default function MainCard() {
         return (
           <>
             <MatchSection
-              matches={matches}
               pageChange={pageChange}>
             </MatchSection>
           </>
@@ -104,7 +106,13 @@ export default function MainCard() {
       case "ChatSection":
         return (
           <>
-            <ChatSection matches={matches}></ChatSection>
+            <ChatSection />
+          </>
+        )
+      case "SettingSection":
+        return (
+          <>
+            <SettingSection />
           </>
         )
       default:

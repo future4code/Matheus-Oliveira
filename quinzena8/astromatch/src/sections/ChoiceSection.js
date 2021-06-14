@@ -59,10 +59,8 @@ export default function ChoiceSection() {
     if (choose === null) {
       axios
         .get(`${API_BASE}${API_NAME}/person`)
-        .then(res => { 
-          setProfiles(res.data.profile)
-         })
-        .catch(() => {  })
+        .then(res => { setProfiles(res.data.profile) })
+        .catch(() => { })
     }
   }, [choose]);
 

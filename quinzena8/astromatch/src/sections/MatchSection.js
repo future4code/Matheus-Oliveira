@@ -1,7 +1,7 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react'
+import { API_BASE, API_NAME } from '../constants/API_Astromatch'
+import axios from 'axios'
 import styled from 'styled-components'
-
 
 const MatchPosition = styled.div`
   overflow-y: scroll;
@@ -32,12 +32,20 @@ const MatchPosition = styled.div`
 `
 
 export default function MatchSection(props) {
+  const [matches, setMatches] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE}${API_NAME}/matches`)
+      .then(res => { setMatches(res.data.matches) })
+      .catch(err => { });
+  }, [matches]);
 
   const renderYourMatch = () => {
     return (
       <>
         <MatchPosition>
-          {props.matches.map((match) => (
+          {matches.map((match) => (
             <a key={match.id} onClick={() => props.pageChange("ChatSection")}>
               <img
                 src={match.photo}
