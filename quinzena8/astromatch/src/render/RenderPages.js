@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ChoiceSection from '../sections/ChoiceSection'
 import MatchSection from '../sections/MatchSection'
 import ChatSection from '../sections/ChatSection'
 import SettingSection from '../sections/SettingSection'
 import styled from 'styled-components'
-import axios from 'axios'
-import { API_BASE, API_NAME } from '../constants/API_Astromatch'
 import AstromatchLogo from '../assets/images/astromatchlogo.png'
 
 const CardPosition = styled.div`

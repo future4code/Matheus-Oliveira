@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { API_BASE, API_NAME } from '../constants/API_Astromatch'
+import HeartPulse from '../components/HeartPulse'
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -60,7 +61,7 @@ export default function ChoiceSection() {
       axios
         .get(`${API_BASE}${API_NAME}/person`)
         .then(res => { setProfiles(res.data.profile) })
-        .catch(() => { })
+        .catch(err => { console.log(err) })
     }
   }, [choose]);
 
@@ -75,7 +76,7 @@ export default function ChoiceSection() {
         .then(() => { setChoose(null) })
         .catch(() => { })
     }
-  }, [choose, profiles.id]);
+  }, [choose]);
 
   const chosenByUser = (value) => {
     setChoose(value)
@@ -83,19 +84,23 @@ export default function ChoiceSection() {
 
   return (
     <ProfilePositon>
-      <ProfilePhoto style={{
-        backgroundSize: `cover`,
-        backgroundPosition: `center`,
-        backgroundImage: `url(${profiles.photo})`
-      }}>
-        <div></div>
-        <h2>{profiles.name}, {profiles.age}</h2>
-        <p>{profiles.bio}</p>
-      </ProfilePhoto>
-      <SelectButtons>
-        <button onClick={() => chosenByUser(false)}>X</button>
-        <button onClick={() => chosenByUser(true)}>S2</button>
-      </SelectButtons>
+      {profiles === null ? <HeartPulse></HeartPulse> : (
+        <>
+          <ProfilePhoto style={{
+            backgroundSize: `cover`,
+            backgroundPosition: `center`,
+            backgroundImage: `url(${profiles.photo})`
+          }}>
+            <div></div>
+            <h2>{profiles.name}, {profiles.age}</h2>
+            <p>{profiles.bio}</p>
+          </ProfilePhoto>
+          <SelectButtons>
+            <button onClick={() => chosenByUser(false)}>X</button>
+            <button onClick={() => chosenByUser(true)}>S2</button>
+          </SelectButtons>
+        </>
+      )}
     </ProfilePositon>
   )
 }
