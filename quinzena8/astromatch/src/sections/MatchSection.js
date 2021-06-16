@@ -7,6 +7,12 @@ const MatchPosition = styled.div`
   overflow-y: scroll;
   height: 90%;
 
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
   a {
     display: flex;
     align-items: center;  
@@ -17,7 +23,7 @@ const MatchPosition = styled.div`
   }
 
   a:hover {
-    background-color: black;
+    background-color: #c7c7c7;
   }
 
   img {
@@ -56,9 +62,9 @@ export default function MatchSection(props) {
           ))}
         </MatchPosition>
       </>
-
     )
   }
+  
   return (
     <>
       {renderYourMatch()}

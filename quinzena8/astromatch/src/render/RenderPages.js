@@ -4,7 +4,11 @@ import MatchSection from '../sections/MatchSection'
 import ChatSection from '../sections/ChatSection'
 import SettingSection from '../sections/SettingSection'
 import styled from 'styled-components'
-import AstromatchLogo from '../assets/images/astromatchlogo.png'
+import ChatBalloon from '../assets/images/svg/chatballoon.svg'
+import ChoosePpl from '../assets/images/svg/chooseppl.svg'
+import Settings from '../assets/images/svg/settings.svg'
+import BackArrow from '../assets/images/svg/backarrow.svg'
+import AstromatchLogo from '../components/AstromatchLogo'
 
 const CardPosition = styled.div`
   display: flex;
@@ -13,7 +17,7 @@ const CardPosition = styled.div`
   height: 100vh;
 `
 const CardSize = styled.div`
-  border: 1px solid black;
+  border: 1px solid #c7c7c7;
   border-radius: 4px;
   height: 596px;
   width: 396px;
@@ -22,11 +26,6 @@ const CardSize = styled.div`
 const CardHead = styled.div`
   border-bottom: 1px solid #d3d3d3;
   height: 48px;
-
-  img {
-    height: 48px;
-    width: 148px;
-  }
 `
 const CardHeadItems = styled.div`
   display: flex;
@@ -36,7 +35,18 @@ const CardHeadItems = styled.div`
 `
 const HeadGhostItem = styled.div`
   height: 24px;
-  width: 23px;
+  width: 30px;
+`
+const IconsChangePage = styled.img`
+  height: 30px;
+  padding-top: 5px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
 `
 
 export default function MainCard() {
@@ -52,31 +62,49 @@ export default function MainCard() {
         return (
           <>
             <HeadGhostItem />
-            <img src={AstromatchLogo} alt="Astromatch Logo" />
-            <button onClick={() => pageChange("MatchSection")}>1</button>
+            <AstromatchLogo />
+            <a onClick={() => pageChange("MatchSection")}>
+              <IconsChangePage
+                src={ChatBalloon}>
+              </IconsChangePage>
+            </a>
           </>
         )
       case "MatchSection":
         return (
           <>
-            <button onClick={() => pageChange("ChoiceSection")}>2</button>
-            <img src={AstromatchLogo} alt="Astromatch Logo" />
-            <button onClick={() => pageChange("SettingSection")}>4</button>
+            <a onClick={() => pageChange("ChoiceSection")}>
+              <IconsChangePage
+                src={ChoosePpl}>
+              </IconsChangePage>
+            </a>
+            <AstromatchLogo />
+            <a onClick={() => pageChange("SettingSection")}>
+              <IconsChangePage
+                src={Settings}>
+              </IconsChangePage>
+            </a>
           </>
         )
       case "ChatSection":
         return (
           <>
-            <button onClick={() => pageChange("MatchSection")}>3</button>
-            <img src={AstromatchLogo} alt="Astromatch Logo" />
+            <a onClick={() => pageChange("MatchSection")}>
+              <IconsChangePage
+                src={BackArrow}>
+              </IconsChangePage></a>
+            <AstromatchLogo />
             <HeadGhostItem />
           </>
         )
       case "SettingSection":
         return (
           <>
-            <button onClick={() => pageChange("MatchSection")}>5</button>
-            <img src={AstromatchLogo} alt="Astromatch Logo" />
+            <a onClick={() => pageChange("MatchSection")}>
+              <IconsChangePage
+                src={BackArrow}>
+              </IconsChangePage></a>
+            <AstromatchLogo />
             <HeadGhostItem />
           </>
         )
@@ -90,7 +118,7 @@ export default function MainCard() {
       case "ChoiceSection":
         return (
           <>
-            <ChoiceSection></ChoiceSection>
+            <ChoiceSection />
           </>
         )
       case "MatchSection":

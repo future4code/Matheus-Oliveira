@@ -76,7 +76,7 @@ const HeartContainer = styled.div`
 export default function HeartPulse() {
   return (
     <>
-     <HeartContainer><div className="heart"></div></HeartContainer>
+      <HeartContainer><div className="heart"></div></HeartContainer>
     </>
   )
 }

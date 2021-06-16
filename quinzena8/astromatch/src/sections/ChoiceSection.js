@@ -8,6 +8,12 @@ const ProfilePositon = styled.div`
   padding-top: 20px;
   height: 75%;
   width: 100%;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 `
 const ProfilePhoto = styled.div`
   position: relative;
