@@ -16,6 +16,7 @@ const ProfilePhoto = styled.div`
   margin: 0 auto;
   border-radius: 5px;
   box-shadow: rgb(117 117 117 / 77%) 0px 2px 10px 0px;
+  transition: 2s;
 
   h2 {
     position: absolute;
@@ -55,14 +56,19 @@ const SelectButtons = styled.div`
 export default function ChoiceSection() {
   const [profiles, setProfiles] = useState({})
   const [choose, setChoose] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     if (choose === null) {
       axios
         .get(`${API_BASE}${API_NAME}/person`)
-        .then(res => { setProfiles(res.data.profile) })
+        .then(res => {
+          setProfiles(res.data.profile)
+          setLoading(false)
+        })
         .catch(err => { console.log(err) })
     }
+
   }, [choose]);
 
   useEffect(() => {
@@ -78,15 +84,45 @@ export default function ChoiceSection() {
     }
   }, [choose]);
 
-  const chosenByUser = (value) => {
-    setChoose(value)
+  const resetCard = () => {
+    const card = document.getElementById("Mcard")
+
+    if (card) {
+      card.style.transition = 'none'
+      card.style.transform = 'translate(0px) rotate(0deg)'
+      card.style.opacity = '1'
+    }
+  }
+
+  const chosenFalseByUser = () => {
+    setChoose(false)
+    const card = document.getElementById("Mcard")
+
+    if (card) {
+      card.style.transition = '2s'
+      card.style.transform = 'translate(-200px) rotate(-20deg)'
+      card.style.opacity = '0'
+      setTimeout(resetCard, 2000);
+    }
+  }
+
+  const chosenTrueByUser = () => {
+    setChoose(true)
+    const card = document.getElementById("Mcard")
+
+    if (card) {
+      card.style.transition = '2s'
+      card.style.transform = 'translate(200px) rotate(20deg)'
+      card.style.opacity = '0'
+      setTimeout(resetCard, 2000);
+    }
   }
 
   return (
     <ProfilePositon>
-      {profiles === null ? <HeartPulse></HeartPulse> : (
+      {profiles === null || loading ? <HeartPulse></HeartPulse> : (
         <>
-          <ProfilePhoto style={{
+          <ProfilePhoto id="Mcard" class="Card" style={{
             backgroundSize: `cover`,
             backgroundPosition: `center`,
             backgroundImage: `url(${profiles.photo})`
@@ -96,8 +132,8 @@ export default function ChoiceSection() {
             <p>{profiles.bio}</p>
           </ProfilePhoto>
           <SelectButtons>
-            <button onClick={() => chosenByUser(false)}>X</button>
-            <button onClick={() => chosenByUser(true)}>S2</button>
+            <button onClick={chosenFalseByUser}>X</button>
+            <button onClick={chosenTrueByUser}>S2</button>
           </SelectButtons>
         </>
       )}

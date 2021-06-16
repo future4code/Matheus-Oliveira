@@ -6,8 +6,11 @@ export default class MessageParser {
   parse(message) {
     const lowercase = message.toLowerCase()
 
-    if (lowercase.includes("oi" || "ola")) {
+    if (lowercase.includes("oi")) {
       this.actionProvider.answerToHi()
+    }
+    if (lowercase.includes("sim")) {
+      this.actionProvider.answerToYes()
     }
   }
 }
