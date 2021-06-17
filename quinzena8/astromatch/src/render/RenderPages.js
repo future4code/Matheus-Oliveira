@@ -24,22 +24,23 @@ const CardSize = styled.div`
   background-color: #FFF;
 `
 const CardHead = styled.div`
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid #e5e5e5;
   height: 48px;
 `
 const CardHeadItems = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
-`
-const HeadGhostItem = styled.div`
-  height: 24px;
-  width: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  
 `
 const IconsChangePage = styled.img`
   height: 30px;
   padding-top: 5px;
+  transition: 200ms;
+  cursor: pointer;
+
+  &:hover {
+    height: 35px;
+  }
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -47,6 +48,19 @@ const IconsChangePage = styled.img`
   -o-user-select: none;
   user-select: none;
 
+`
+const MainLogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 3;
+`
+
+const ChangePageIcon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column-start: 5;
 `
 
 export default function MainCard() {
@@ -61,13 +75,16 @@ export default function MainCard() {
       case "ChoiceSection":
         return (
           <>
-            <HeadGhostItem />
-            <AstromatchLogo />
-            <a onClick={() => pageChange("MatchSection")}>
-              <IconsChangePage
-                src={ChatBalloon}>
-              </IconsChangePage>
-            </a>
+            <MainLogoContainer>
+              <AstromatchLogo />
+            </MainLogoContainer>
+            <ChangePageIcon>
+              <a onClick={() => pageChange("MatchSection")}>
+                <IconsChangePage
+                  src={ChatBalloon}>
+                </IconsChangePage>
+              </a>
+            </ChangePageIcon>
           </>
         )
       case "MatchSection":
@@ -92,9 +109,9 @@ export default function MainCard() {
             <a onClick={() => pageChange("MatchSection")}>
               <IconsChangePage
                 src={BackArrow}>
-              </IconsChangePage></a>
+              </IconsChangePage>
+            </a>
             <AstromatchLogo />
-            <HeadGhostItem />
           </>
         )
       case "SettingSection":
@@ -103,9 +120,9 @@ export default function MainCard() {
             <a onClick={() => pageChange("MatchSection")}>
               <IconsChangePage
                 src={BackArrow}>
-              </IconsChangePage></a>
+              </IconsChangePage>
+            </a>
             <AstromatchLogo />
-            <HeadGhostItem />
           </>
         )
       default:

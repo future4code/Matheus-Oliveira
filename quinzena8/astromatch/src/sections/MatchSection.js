@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { API_BASE, API_NAME } from '../constants/API_Astromatch'
 import axios from 'axios'
 import styled from 'styled-components'
+import LoadingSpin from '../components/LoadingSpin'
+import ListMatches from '../components/ListMatches'
 
 const MatchPosition = styled.div`
   overflow-y: scroll;
@@ -13,37 +15,26 @@ const MatchPosition = styled.div`
   -o-user-select: none;
   user-select: none;
 
-  a {
-    display: flex;
-    align-items: center;  
-    margin: 15px;
-    height: 70px;
-    padding-left: 15px;
-    cursor: pointer;
+  ::-webkit-scrollbar {
+    width: 10px;
   }
-
-  a:hover {
-    background-color: #c7c7c7;
-  }
-
-  img {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-  }
-
-  p {
-    padding-left: 10px;
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #762D93;
   }
 `
 
 export default function MatchSection(props) {
   const [matches, setMatches] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     axios
       .get(`${API_BASE}${API_NAME}/matches`)
-      .then(res => { setMatches(res.data.matches) })
+      .then(res => {
+        setMatches(res.data.matches)
+        setLoading(false)
+      })
       .catch(err => { });
   }, [matches]);
 
@@ -51,20 +42,16 @@ export default function MatchSection(props) {
     return (
       <>
         <MatchPosition>
-          {matches.map((match) => (
-            <a key={match.id} onClick={() => props.pageChange("ChatSection")}>
-              <img
-                src={match.photo}
-                alt="match photo">
-              </img>
-              <p>{match.name}</p>
-            </a>
-          ))}
-        </MatchPosition>
+          {loading ? <LoadingSpin /> : (
+            <>
+              <ListMatches matches={matches}
+              pageChange={props.pageChange}/>
+            </>
+          )}</MatchPosition>
       </>
     )
   }
-  
+
   return (
     <>
       {renderYourMatch()}
