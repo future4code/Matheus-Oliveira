@@ -10,7 +10,6 @@ const ProfilePhoto = styled.div`
   box-shadow: rgb(117 117 117 / 77%) 0px 2px 10px 0px;
   transition: 2s;
 `
-
 const ShadowBox = styled.div` 
   position: absolute;
   top: 65%;
@@ -19,7 +18,6 @@ const ShadowBox = styled.div`
   border-radius: 5px;
   background-image: linear-gradient(to top, #111 15%, transparent 85%);
 `
-
 const ProfileName = styled.h2`
   position: absolute;
   top: 72%;
@@ -27,7 +25,6 @@ const ProfileName = styled.h2`
   color: white;
   padding-left: 15px;
 `
-
 const ProfileBio = styled.p`
   position: absolute;
   top: 80%;

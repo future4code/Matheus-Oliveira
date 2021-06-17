@@ -4,24 +4,14 @@ import axios from 'axios'
 import styled from 'styled-components'
 import LoadingSpin from '../components/LoadingSpin'
 import ListMatches from '../components/ListMatches'
+import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
+import ScrollStyle from '../themes/scroll.js/ScrollStyle'
 
 const MatchPosition = styled.div`
   overflow-y: scroll;
   height: 90%;
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: #762D93;
-  }
+  ${WebkitUserSelect}
+  ${ScrollStyle}
 `
 
 export default function MatchSection(props) {

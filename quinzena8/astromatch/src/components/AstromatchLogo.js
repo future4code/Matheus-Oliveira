@@ -1,16 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import logoAstromatch from '../assets/images/png/astromatchlogo.png'
+import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
 
 const Logo = styled.img`
   height: 48px;
   width: 148px;
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
+  ${WebkitUserSelect}
   `
 
 export default function AstromatchLogo() {

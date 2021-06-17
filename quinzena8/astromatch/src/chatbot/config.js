@@ -5,10 +5,10 @@ const config = {
   initialMessages: [ createChatBotMessage(`Olá, sou seu Match`) ],
   customStyles: {
     botMessageBox: {
-      backgroundColor: "purple"
+      backgroundColor: "#762D93"
     },
     chatButton: {
-      backgroundColor: "purple"
+      backgroundColor: "#762D93"
     }
   }
 }

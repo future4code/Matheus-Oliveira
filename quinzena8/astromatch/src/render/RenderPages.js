@@ -8,16 +8,17 @@ import ChatBalloon from '../assets/images/svg/chatballoon.svg'
 import ChoosePpl from '../assets/images/svg/chooseppl.svg'
 import Settings from '../assets/images/svg/settings.svg'
 import BackArrow from '../assets/images/svg/backarrow.svg'
-import AstromatchLogo from '../components/AstromatchLogo'
+import DisplayFlexCenter from '../themes/display/DisplayFlexCenter'
+import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
+import MainLogoContainer from '../components/MainLogoContainer'
 
 const CardPosition = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${DisplayFlexCenter}
   height: 100vh;
 `
 const CardSize = styled.div`
   border: 1px solid #c7c7c7;
+  box-shadow: 0 0 2em #111;
   border-radius: 4px;
   height: 596px;
   width: 396px;
@@ -30,36 +31,20 @@ const CardHead = styled.div`
 const CardHeadItems = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  
 `
 const IconsChangePage = styled.img`
   height: 30px;
   padding-top: 5px;
   transition: 200ms;
   cursor: pointer;
+  ${WebkitUserSelect}
 
   &:hover {
     height: 35px;
   }
-
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
 `
-const MainLogoContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column-start: 3;
-`
-
 const ChangePageIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${DisplayFlexCenter}
   grid-column-start: 5;
 `
 
@@ -75,9 +60,7 @@ export default function MainCard() {
       case "ChoiceSection":
         return (
           <>
-            <MainLogoContainer>
-              <AstromatchLogo />
-            </MainLogoContainer>
+            <MainLogoContainer />
             <ChangePageIcon>
               <a onClick={() => pageChange("MatchSection")}>
                 <IconsChangePage
@@ -95,7 +78,9 @@ export default function MainCard() {
                 src={ChoosePpl}>
               </IconsChangePage>
             </a>
-            <AstromatchLogo />
+
+            <MainLogoContainer />
+
             <a onClick={() => pageChange("SettingSection")}>
               <IconsChangePage
                 src={Settings}>
@@ -111,7 +96,9 @@ export default function MainCard() {
                 src={BackArrow}>
               </IconsChangePage>
             </a>
-            <AstromatchLogo />
+
+            <MainLogoContainer />
+
           </>
         )
       case "SettingSection":
@@ -122,7 +109,9 @@ export default function MainCard() {
                 src={BackArrow}>
               </IconsChangePage>
             </a>
-            <AstromatchLogo />
+
+            <MainLogoContainer />
+
           </>
         )
       default:
@@ -130,7 +119,7 @@ export default function MainCard() {
     }
   }
 
-  const renderPage = () => {
+  const renderBody = () => {
     switch (Page) {
       case "ChoiceSection":
         return (
@@ -171,7 +160,7 @@ export default function MainCard() {
             {renderHead()}
           </CardHeadItems>
         </CardHead>
-        {renderPage()}
+        {renderBody()}
       </CardSize>
     </CardPosition>
   )

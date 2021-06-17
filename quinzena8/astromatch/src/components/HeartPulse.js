@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import DisplayFlexCenter from '../themes/display/DisplayFlexCenter'
 
 const HeartContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  ${DisplayFlexCenter}
   height: 100%;
 
   .heart {
