@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { API_BASE, API_NAME } from '../constants/API_Astromatch'
+import { API_BASE, API_NAME } from '../../constants/API_Astromatch'
 import axios from 'axios'
 import styled from 'styled-components'
-import LoadingSpin from '../components/LoadingSpin'
-import ListMatches from '../components/ListMatches'
-import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
-import ScrollStyle from '../themes/scroll.js/ScrollStyle'
+import LoadingSpin from './components/LoadingSpin'
+import ListMatches from './components/ListMatches'
+import WebkitUserSelect from '../../themes/webkit/WebkitUserSelect'
+import ScrollStyle from '../../themes/scroll.js/ScrollStyle'
 
 const MatchPosition = styled.div`
   overflow-y: scroll;

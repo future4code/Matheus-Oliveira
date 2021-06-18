@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import DisplayFlexCenter from '../themes/display/DisplayFlexCenter'
+import DisplayFlexCenter from '../../../themes/display/DisplayFlexCenter'
 
 const HeartContainer = styled.div`
   ${DisplayFlexCenter}

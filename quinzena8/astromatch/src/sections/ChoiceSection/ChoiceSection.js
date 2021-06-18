@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { API_BASE, API_NAME } from '../constants/API_Astromatch'
-import HeartPulse from '../components/HeartPulse'
+import { API_BASE, API_NAME } from '../../constants/API_Astromatch'
+import HeartPulse from './components/HeartPulse'
 import styled from 'styled-components'
 import axios from 'axios'
-import MatchButtons from '../components/MatchButtons'
-import ProfileInfo from '../components/ProfileInfo'
-import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
+import MatchButtons from './components/MatchButton'
+import ProfileInfo from './components/ProfileInfo'
+import WebkitUserSelect from '../../themes/webkit/WebkitUserSelect'
 
 const ProfilePositon = styled.div`
   padding-top: 20px;

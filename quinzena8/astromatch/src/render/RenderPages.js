@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import ChoiceSection from '../sections/ChoiceSection'
-import MatchSection from '../sections/MatchSection'
-import ChatSection from '../sections/ChatSection'
-import SettingSection from '../sections/SettingSection'
+import ChoiceSection from '../sections/ChoiceSection/ChoiceSection'
+import MatchSection from '../sections/MatchSection/MatchSection'
+import ChatSection from '../sections/ChatSection/ChatSection'
+import SettingSection from '../sections/SettingSection/SettingSection'
 import styled from 'styled-components'
-import ChatBalloon from '../assets/images/svg/chatballoon.svg'
-import ChoosePpl from '../assets/images/svg/chooseppl.svg'
-import Settings from '../assets/images/svg/settings.svg'
-import BackArrow from '../assets/images/svg/backarrow.svg'
 import DisplayFlexCenter from '../themes/display/DisplayFlexCenter'
-import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
-import MainLogoContainer from '../components/MainLogoContainer'
+import MainLogoContainer from '../globalComponents/MainLogoContainer'
+import ChoiceSectionButton from './components/ChoiceSectionButton'
+import MatchSectionButtons from './components/MatchSectionButton'
+import ChatSectionButton from './components/ChatSectionButton'
+import SettingSectionButton from './components/SettingButton'
 
 const CardPosition = styled.div`
   ${DisplayFlexCenter}
@@ -32,21 +31,6 @@ const CardHeadItems = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `
-const IconsChangePage = styled.img`
-  height: 30px;
-  padding-top: 5px;
-  transition: 200ms;
-  cursor: pointer;
-  ${WebkitUserSelect}
-
-  &:hover {
-    height: 35px;
-  }
-`
-const ChangePageIcon = styled.div`
-  ${DisplayFlexCenter}
-  grid-column-start: 5;
-`
 
 export default function MainCard() {
   const [Page, setPage] = useState("ChoiceSection")
@@ -61,57 +45,28 @@ export default function MainCard() {
         return (
           <>
             <MainLogoContainer />
-            <ChangePageIcon>
-              <a onClick={() => pageChange("MatchSection")}>
-                <IconsChangePage
-                  src={ChatBalloon}>
-                </IconsChangePage>
-              </a>
-            </ChangePageIcon>
+            <ChoiceSectionButton pageChange={pageChange} />
           </>
         )
       case "MatchSection":
         return (
           <>
-            <a onClick={() => pageChange("ChoiceSection")}>
-              <IconsChangePage
-                src={ChoosePpl}>
-              </IconsChangePage>
-            </a>
-
             <MainLogoContainer />
-
-            <a onClick={() => pageChange("SettingSection")}>
-              <IconsChangePage
-                src={Settings}>
-              </IconsChangePage>
-            </a>
+            <MatchSectionButtons pageChange={pageChange} />
           </>
         )
       case "ChatSection":
         return (
           <>
-            <a onClick={() => pageChange("MatchSection")}>
-              <IconsChangePage
-                src={BackArrow}>
-              </IconsChangePage>
-            </a>
-
             <MainLogoContainer />
-
+            <ChatSectionButton pageChange={pageChange} />
           </>
         )
       case "SettingSection":
         return (
           <>
-            <a onClick={() => pageChange("MatchSection")}>
-              <IconsChangePage
-                src={BackArrow}>
-              </IconsChangePage>
-            </a>
-
             <MainLogoContainer />
-
+            <SettingSectionButton pageChange={pageChange}/>
           </>
         )
       default:

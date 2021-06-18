@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { API_BASE, API_NAME } from '../constants/API_Astromatch'
+import { API_BASE, API_NAME } from '../../constants/API_Astromatch'
 import axios from 'axios'
 
 export default function SettingSection() {

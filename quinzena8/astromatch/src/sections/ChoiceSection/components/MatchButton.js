@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import LikeHeart from '../assets/images/svg/purpleheart.svg'
-import Xchoice from '../assets/images/svg/dislikeX.svg'
-import DisplayFlexCenter from '../themes/display/DisplayFlexCenter'
-import WebkitUserSelect from '../themes/webkit/WebkitUserSelect'
+import LikeHeart from '../../../assets/images/svg/purpleheart.svg'
+import Xchoice from '../../../assets/images/svg/dislikeX.svg'
+import DisplayFlexCenter from '../../../themes/display/DisplayFlexCenter'
+import WebkitUserSelect from '../../../themes/webkit/WebkitUserSelect'
 
 const SelectButtons = styled.div`
   display: grid;
