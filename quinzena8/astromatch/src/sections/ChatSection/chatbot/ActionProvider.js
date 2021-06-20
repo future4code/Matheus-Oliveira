@@ -10,10 +10,14 @@ export default class ActionProvider {
   }
 
   answerToYes = () => {
-    const message = this.createChatBotMessage("Que ótimo, o que você esta fazendo agora?")
+    const message = this.createChatBotMessage("Que legal! comigo também")
     this.addMessageToState(message)
   }
-  
+  answerToNo = () => {
+    const message = this.createChatBotMessage("Que pena, espero que você fique bem")
+    this.addMessageToState(message)
+  }
+
   addMessageToState = (message) => {
     this.setState((prevState) => ({
       ...prevState,
