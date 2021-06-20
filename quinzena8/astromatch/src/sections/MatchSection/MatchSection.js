@@ -25,7 +25,7 @@ export default function MatchSection(props) {
         setMatches(res.data.matches)
         setLoading(false)
       })
-      .catch(err => { });
+      .catch(err => { alert("Erro", err.data) });
   }, [matches]);
 
   const renderYourMatch = () => {
@@ -35,7 +35,7 @@ export default function MatchSection(props) {
           {loading ? <LoadingSpin /> : (
             <>
               <ListMatches matches={matches}
-              pageChange={props.pageChange}/>
+                pageChange={props.pageChange} />
             </>
           )}</MatchPosition>
       </>

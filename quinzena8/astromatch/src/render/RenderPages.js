@@ -32,7 +32,7 @@ const CardHeadItems = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 `
 
-export default function MainCard() {
+export default function RenderPages() {
   const [Page, setPage] = useState("ChoiceSection")
 
   const pageChange = (page) => {

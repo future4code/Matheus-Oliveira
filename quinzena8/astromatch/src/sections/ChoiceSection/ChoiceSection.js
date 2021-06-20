@@ -42,7 +42,7 @@ export default function ChoiceSection() {
         .then(() => { setChoose(null) })
         .catch(() => { })
     }
-  }, [choose]);
+  }, [choose, profiles]);
 
   const resetCard = () => {
     const card = document.getElementById("Mcard")

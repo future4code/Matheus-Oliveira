@@ -18,18 +18,18 @@ const IconsChangePage = styled.img`
     ${IconsChangePageStyle}
 `
 
-export default function ChoiceSectionButton(props) {
+export default function MatchSectionButton(props) {
   return (
     <>
       <BackToChoiceSection>
-        <a onClick={() => props.pageChange("ChoiceSection")}>
+        <a  href="/#" onClick={() => props.pageChange("ChoiceSection")}>
           <IconsChangePage
             src={ChoosePpl}>
           </IconsChangePage>
         </a>
       </BackToChoiceSection>
       <SettingsButton>
-        <a onClick={() => props.pageChange("SettingSection")}>
+        <a  href="/#" onClick={() => props.pageChange("SettingSection")}>
           <IconsChangePage
             src={Settings}>
           </IconsChangePage>

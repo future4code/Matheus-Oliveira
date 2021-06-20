@@ -13,10 +13,10 @@ const IconsChangePage = styled.img`
     ${IconsChangePageStyle}
 `
 
-export default function ChoiceSectionButton(props) {
+export default function ChatSectionButton(props) {
   return (
       <BackToMatchSection>
-        <a onClick={() => props.pageChange("MatchSection")}>
+        <a href="/#" onClick={() => props.pageChange("MatchSection")}>
           <IconsChangePage
             src={BackArrow}>
           </IconsChangePage>

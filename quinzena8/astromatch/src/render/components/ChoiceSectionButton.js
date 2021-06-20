@@ -15,7 +15,7 @@ const IconsChangePage = styled.img`
 export default function ChoiceSectionButton(props) {
   return (
       <ChangePageIcon>
-        <a onClick={() => props.pageChange("MatchSection")}>
+        <a  href="/#" onClick={() => props.pageChange("MatchSection")}>
           <IconsChangePage
             src={ChatBalloon}>
           </IconsChangePage>

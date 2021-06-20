@@ -31,14 +31,14 @@ export default function MatchButtons(props) {
     <>
       <SelectButtons>
         <div>
-          <a onClick={props.chosenFalseByUser}>
+          <a  href="/#" onClick={props.chosenFalseByUser}>
             <IconsButtons
               src={Xchoice}>
             </IconsButtons>
           </a>
         </div>
         <div>
-          <a onClick={props.chosenTrueByUser}>
+          <a  href="/#" onClick={props.chosenTrueByUser}>
             <IconsButtons
               src={LikeHeart}>
             </IconsButtons>
