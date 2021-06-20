@@ -38,7 +38,7 @@ export default function SettingSection() {
         axios
           .put(`${API_BASE}${API_NAME}/clear`)
           .then(() => { })
-          .catch(() => { alert("Erro", err.data) })
+          .catch((err) => { alert("Erro", err.data) })
       }
     }
   }, [reset]);
