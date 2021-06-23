@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
-import GlobalStyle from './themes/globalStyle'
-import MainCard from './components/MainCard'
+import React from 'react';
+import GlobalStyle from './themes/globalStyle/globalStyle';
+import RenderPages from './render/RenderPages'
 
 export default function App() {
   return (
-    <Fragment>
-      <GlobalStyle></GlobalStyle>
-      <MainCard></MainCard>
-    </Fragment>
+    <>
+      <GlobalStyle />
+      <RenderPages />
+    </>
   )
 }
