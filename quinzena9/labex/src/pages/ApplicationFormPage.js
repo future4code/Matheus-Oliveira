@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { useHistory } from "react-router-dom";
 
 const ApplicationFormPageContainer = styled.div`
   display: flex;
@@ -20,11 +21,19 @@ const ApplicationFormItems = styled.div`
     margin: 10px;
   }
 `
-const ApplicationFormButton = styled.div`
-  max-width: 100px;
+const HomeButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 10vw;
 `
 
-export default function HomePage() {
+export const ApplicationFormPage = () => {
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+
   return (
     <ApplicationFormPageContainer>
       <h1>Inscreva-se para uma viagem</h1>
@@ -290,10 +299,10 @@ export default function HomePage() {
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
       </ApplicationFormItems>
-      <ApplicationFormButton>
-        <button>Voltar</button>
+      <HomeButtonContainer>
+        <button onClick={goBack}>Voltar</button>
         <button>Enviar</button>
-      </ApplicationFormButton>
+      </HomeButtonContainer>
     </ApplicationFormPageContainer>
   )
 }

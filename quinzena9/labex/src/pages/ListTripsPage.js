@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { useHistory } from "react-router-dom";
 
 const ListTripPageContainer = styled.div`
   display: flex;
@@ -17,14 +18,29 @@ const ListTripCardItems = styled.div`
   padding-top: 25px;
   padding-left: 15px;
 `
+const HomeButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+`
 
-export default function HomePage() {
+export const ListTripsPage = () => {
+  const history = useHistory();
+
+  const goBack = () => {
+    history.goBack();
+  };
+  
+  const goToApplicationPage = () => {
+    history.push("/form");
+  };
+
   return (
     <ListTripPageContainer>
-      <div>
-        <button>Voltar</button>
-        <button>Inscrever-se</button>
-      </div>
+      <HomeButtonContainer>
+        <button onClick={goBack}>Voltar</button>
+        <button onClick={goToApplicationPage}>Inscrever-se</button>
+      </HomeButtonContainer>
       <div>
         <h1>Lista de Viagens</h1>
       </div>
