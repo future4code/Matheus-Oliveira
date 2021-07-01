@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
+import useForm from "../hooks/useForm";
 
 const ApplicationFormPageContainer = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ const ApplicationFormPageContainer = styled.div`
   flex-direction: column;
   height: 100vh;
 `
-const ApplicationFormItems = styled.div`
+const ApplicationFormItems = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -28,16 +29,24 @@ const HomeButtonContainer = styled.div`
 `
 
 export const ApplicationFormPage = () => {
+  const { form, onChange } = useForm({
+    name: "", age: "", applicationText: "", profession: "", country: ""
+  })
   const history = useHistory();
+
+  const onSubmitApply = (event) => {
+    event.preventDefault();
+
+  };
 
   const goBack = () => {
     history.goBack();
-  };
+  }
 
   return (
     <ApplicationFormPageContainer>
       <h1>Inscreva-se para uma viagem</h1>
-      <ApplicationFormItems>
+      <ApplicationFormItems onSubmit={onSubmitApply}>
         <select>
           <option value disabled selected>Escolha uma Viagem</option>
           <option>Viagem para o Sol</option>
@@ -45,10 +54,42 @@ export const ApplicationFormPage = () => {
           <option>Viagem para Marte</option>
           <option>Viagem para Plutão</option>
         </select>
-        <input placeholder="Nome"></input>
-        <input placeholder="Idade" type="number"></input>
-        <input placeholder="Texto de Candidatura"></input>
-        <input placeholder="Profissão"></input>
+        <input
+          name="name"
+          value={form.name}
+          onChange={onChange}
+          placeholder={"Nome"}
+          required
+          pattern={"^.{3,}"}
+          title={"Seu nome deve ter no mínimo 3 caracteres"}
+        />
+        <input
+          name={"idade"}
+          value={form.idade}
+          onChange={onChange}
+          placeholder="Idade"
+          required
+          type={"number"}
+          min={18}
+        />
+        <input
+          name="applicationText"
+          value={form.applicationText}
+          onChange={onChange}
+          placeholder="Texto de Candidatura"
+          required
+          pattern={"^.{30,}"}
+          title={"Seu texto deve ter no mínimo 30 caracteres"}
+        />
+        <input
+          name="profession"
+          value={form.profession}
+          onChange={onChange}
+          placeholder="Profissão"
+          required
+          pattern={"^.{10,}"}
+          title={"Sua profissão deve ter no mínimo 30 caracteres"}
+        />
         <select>
           <option value disabled selected>Escolha um País</option>
           <option value="Afganistan">Afghanistan</option>
@@ -298,10 +339,11 @@ export const ApplicationFormPage = () => {
           <option value="Zambia">Zambia</option>
           <option value="Zimbabwe">Zimbabwe</option>
         </select>
+        <button>Enviar</button>
       </ApplicationFormItems>
       <HomeButtonContainer>
         <button onClick={goBack}>Voltar</button>
-        <button>Enviar</button>
+
       </HomeButtonContainer>
     </ApplicationFormPageContainer>
   )

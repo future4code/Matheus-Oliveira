@@ -1,6 +1,9 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
+import { API_BASE } from "../constants/labexAPI";
+import { Aluno } from "../constants/labexAPI";
+import axios from "axios";
 
 const ListTripPageContainer = styled.div`
   display: flex;
@@ -26,11 +29,26 @@ const HomeButtonContainer = styled.div`
 
 export const ListTripsPage = () => {
   const history = useHistory();
+  const [allTrips, setAllTrips] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(
+        `${API_BASE}${Aluno}/trips`
+      )
+      .then((response) => {
+        setAllTrips(response.data.trips)
+        console.log(response.data.trips)
+      })
+      .catch((error) => {
+        console.log("Deu erro: ", error.response);
+      });
+  }, []);
 
   const goBack = () => {
     history.goBack();
   };
-  
+
   const goToApplicationPage = () => {
     history.push("/form");
   };
@@ -44,27 +62,29 @@ export const ListTripsPage = () => {
       <div>
         <h1>Lista de Viagens</h1>
       </div>
-      <ListTripCardContainer>
-        <ListTripCardItems>Nome:</ListTripCardItems>
-        <ListTripCardItems>Descrição:</ListTripCardItems>
-        <ListTripCardItems>Planeta:</ListTripCardItems>
-        <ListTripCardItems>Duração:</ListTripCardItems>
-        <ListTripCardItems>Data:</ListTripCardItems>
-      </ListTripCardContainer>
-      <ListTripCardContainer>
-        <ListTripCardItems>Nome:</ListTripCardItems>
-        <ListTripCardItems>Descrição:</ListTripCardItems>
-        <ListTripCardItems>Planeta:</ListTripCardItems>
-        <ListTripCardItems>Duração:</ListTripCardItems>
-        <ListTripCardItems>Data:</ListTripCardItems>
-      </ListTripCardContainer>
-      <ListTripCardContainer>
-        <ListTripCardItems>Nome:</ListTripCardItems>
-        <ListTripCardItems>Descrição:</ListTripCardItems>
-        <ListTripCardItems>Planeta:</ListTripCardItems>
-        <ListTripCardItems>Duração:</ListTripCardItems>
-        <ListTripCardItems>Data:</ListTripCardItems>
-      </ListTripCardContainer>
+      <>
+        {allTrips.map(trips => {
+          return (
+            <ListTripCardContainer>
+              <ListTripCardItems>
+                Nome: {trips.name}
+              </ListTripCardItems>
+              <ListTripCardItems>
+                Descrição: {trips.description}
+              </ListTripCardItems>
+              <ListTripCardItems>
+                Planeta: {trips.planet}
+              </ListTripCardItems>
+              <ListTripCardItems>
+                Duração: {trips.durationInDays}
+              </ListTripCardItems>
+              <ListTripCardItems>
+                Data: {trips.date}
+              </ListTripCardItems>
+            </ListTripCardContainer>
+          )
+        })}
+      </>
     </ListTripPageContainer>
   )
 }

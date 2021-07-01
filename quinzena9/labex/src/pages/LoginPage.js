@@ -1,58 +1,47 @@
 import axios from "axios";
-import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import useForm from "../hooks/useForm";
+import { API_BASE } from "../constants/labexAPI";
+import { Aluno } from "../constants/labexAPI";
 
 export const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+  const { form, onChange, cleanFields } = useForm({ email: "", password: "" });
   const history = useHistory();
 
-  const onChangeEmail = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const onChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const onSubmitLogin = () => {
-    console.log(email, password);
-    const body = {
-      email: email,
-      password: password
-    };
-
+  const onSubmitLogin = (event) => {
+    event.preventDefault();
     axios
       .post(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus/login",
-        body
+        `${API_BASE}${Aluno}/login`, form
       )
       .then((response) => {
-        console.log("Deu certo: ", response.data.token);
         localStorage.setItem("token", response.data.token);
         history.push("/admhome");
+        cleanFields();
       })
-      .catch((error) => {
-        console.log("Deu errado: ", error.response);
-      });
+      .catch(() => { });
   };
 
   return (
     <div>
-      <input
-        placeholder="email"
-        type="email"
-        value={email}
-        onChange={onChangeEmail}
-      />
-      <input
-        placeholder="password"
-        type="password"
-        value={password}
-        onChange={onChangePassword}
-      />
-      <button onClick={onSubmitLogin}>Entrar</button>
+      <form onSubmit={onSubmitLogin}>
+        <input
+          name="email"
+          value={form.email}
+          onChange={onChange}
+          placeholder={"E-mail"}
+          required
+          type="email"
+        />
+        <input
+          name="password"
+          value={form.password}
+          onChange={onChange}
+          placeholder={"Senha"}
+          required
+        />
+        <button>Entrar</button>
+      </form>
     </div>
   );
 };

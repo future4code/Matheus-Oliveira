@@ -3,7 +3,7 @@ import { ListTripsPage } from "../pages/ListTripsPage"
 import { ApplicationFormPage } from "../pages/ApplicationFormPage"
 import { AdminHomePage } from "../pages/AdminHomePage"
 import { LoginPage } from "../pages/LoginPage"
-import { TripDetails } from "../pages/TripDetailsPage"
+import { TripDetailsPage } from "../pages/TripDetailsPage"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 export const Router = () => {
@@ -25,8 +25,8 @@ export const Router = () => {
         <Route exact path={"/admhome"}>
           <AdminHomePage />
         </Route>
-        <Route exact path={"/details"}>
-          <TripDetails />
+        <Route exact path={"/details/:id"}>
+          <TripDetailsPage />
         </Route>
       </Switch>
     </BrowserRouter>

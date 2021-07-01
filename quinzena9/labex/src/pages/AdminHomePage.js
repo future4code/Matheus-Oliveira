@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
-import { TripDetails } from "./TripDetailsPage";
 import axios from "axios";
 
 const useProtectedPage = () => {
@@ -28,16 +27,16 @@ export const AdminHomePage = () => {
         "https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus/trips"
       )
       .then((response) => {
-        console.log(response.data);
         setAllTrips(response.data.trips)
+        console.log(response.data.trips)
       })
       .catch((error) => {
         console.log("Deu erro: ", error.response);
       });
   }, []);
 
-  const handleTripButton = () => {
-    history.push("/details");
+  const handleTripButton = (id) => {
+    history.push(`/details/${id}`)
   }
 
   return (
@@ -47,7 +46,7 @@ export const AdminHomePage = () => {
         {allTrips.map(trips => {
           return (
             <div>
-              <button onClick={() => handleTripButton(trips)}>{trips.name}</button>
+              <button onClick={() => handleTripButton(trips.id)}>{trips.name}</button>
             </div>
           )
         })}
