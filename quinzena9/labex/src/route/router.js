@@ -13,10 +13,10 @@ export const Router = () => {
         <Route exact path={"/"}>
           <HomePage />
         </Route>
-        <Route exact path={"/list"}>
+        <Route exact path={"/trips/list"}>
           <ListTripsPage />
         </Route>
-        <Route exact path={"/form"}>
+        <Route exact path={"/trips/application"}>
           <ApplicationFormPage />
         </Route>
         <Route exact path={"/login"}>

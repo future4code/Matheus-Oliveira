@@ -38,7 +38,6 @@ export const ListTripsPage = () => {
       )
       .then((response) => {
         setAllTrips(response.data.trips)
-        console.log(response.data.trips)
       })
       .catch((error) => {
         console.log("Deu erro: ", error.response);
@@ -49,15 +48,15 @@ export const ListTripsPage = () => {
     history.goBack();
   };
 
-  const goToApplicationPage = () => {
-    history.push("/form");
-  };
+  const goToApplyPage = () => {
+    history.push("/trips/application")
+  }
 
   return (
     <ListTripPageContainer>
       <HomeButtonContainer>
         <button onClick={goBack}>Voltar</button>
-        <button onClick={goToApplicationPage}>Inscrever-se</button>
+        <button onClick={goToApplyPage}>Inscrever-se</button>
       </HomeButtonContainer>
       <div>
         <h1>Lista de Viagens</h1>
@@ -65,7 +64,7 @@ export const ListTripsPage = () => {
       <>
         {allTrips.map(trips => {
           return (
-            <ListTripCardContainer>
+            <ListTripCardContainer key={trips.id}>
               <ListTripCardItems>
                 Nome: {trips.name}
               </ListTripCardItems>

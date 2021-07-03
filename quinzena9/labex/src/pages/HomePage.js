@@ -24,7 +24,7 @@ export const HomePage = () => {
   const history = useHistory();
 
   const goToTripPage = () => {
-    history.push("/list")
+    history.push("/trips/list")
   };
 
   const goToAdminPage = () => {

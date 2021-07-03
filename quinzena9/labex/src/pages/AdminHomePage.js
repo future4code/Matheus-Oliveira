@@ -28,7 +28,6 @@ export const AdminHomePage = () => {
       )
       .then((response) => {
         setAllTrips(response.data.trips)
-        console.log(response.data.trips)
       })
       .catch((error) => {
         console.log("Deu erro: ", error.response);

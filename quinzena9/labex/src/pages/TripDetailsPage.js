@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from "react"
 import axios from "axios";
-import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
 
@@ -19,12 +19,13 @@ const useProtectedPage = () => {
 export const TripDetailsPage = () => {
   useProtectedPage();
   const pathParams = useParams()
+  const [trip, setTrip] = useState({})
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
       .get(
-      `https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus/trip/${pathParams.id}`,
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus/trip/${pathParams.id}`,
         {
           headers: {
             auth: token
@@ -32,12 +33,18 @@ export const TripDetailsPage = () => {
         }
       )
       .then((response) => {
+        setTrip(response.data)
         console.log(response.data)
-        console.log(pathParams)
       })
       .catch((error) => {
         console.log("Deu erro: ", error.response);
       });
-  }, []);
-  return <div>Detalhes da viagem!</div>;
+  }, [trip]);
+
+
+  return (
+    <div>
+      {trip.trip.name}
+    </div>
+  )
 };

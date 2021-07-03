@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom";
 import useForm from "../hooks/useForm";
+import { API_BASE } from "../constants/labexAPI";
+import { Aluno } from "../constants/labexAPI";
+import axios from "axios";
 
 const ApplicationFormPageContainer = styled.div`
   display: flex;
@@ -29,14 +32,55 @@ const HomeButtonContainer = styled.div`
 `
 
 export const ApplicationFormPage = () => {
-  const { form, onChange } = useForm({
-    name: "", age: "", applicationText: "", profession: "", country: ""
+  const { form, onChange, cleanFields } = useForm({
+    name: "",
+    age: "",
+    applicationText: "",
+    profession: "",
+    country: "",
+    tripId: ""
   })
-  const history = useHistory();
+  const history = useHistory()
+  const [allTrips, setAllTrips] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(
+        `${API_BASE}${Aluno}/trips`
+      )
+      .then((response) => {
+        setAllTrips(response.data.trips)
+      })
+      .catch((error) => {
+        console.log("Deu erro: ", error.response);
+      });
+  }, []);
 
   const onSubmitApply = (event) => {
     event.preventDefault();
 
+    const body = {
+      name: form.name,
+      age: form.age,
+      applicationText: form.applicationText,
+      profession: form.profession,
+      country: form.country
+    }
+
+    axios
+      .post(
+        `${API_BASE}${Aluno}/trips/${form.tripId}/apply`, body, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      )
+      .then((res) => {
+        cleanFields();
+      })
+      .catch((error) => {
+        console.log("Deu erro: ", error.response);
+      });
   };
 
   const goBack = () => {
@@ -47,12 +91,13 @@ export const ApplicationFormPage = () => {
     <ApplicationFormPageContainer>
       <h1>Inscreva-se para uma viagem</h1>
       <ApplicationFormItems onSubmit={onSubmitApply}>
-        <select>
-          <option value disabled selected>Escolha uma Viagem</option>
-          <option>Viagem para o Sol</option>
-          <option>Viagem ao centro da Lua</option>
-          <option>Viagem para Marte</option>
-          <option>Viagem para Plutão</option>
+        <select name="tripId" value={form.tripId} onChange={onChange}>
+          <option disabled>Escolha uma Viagem</option>
+          {allTrips.map(trips => {
+            return (
+              <option key={trips.id} value={trips.id}>{trips.name}</option>
+            )
+          })}
         </select>
         <input
           name="name"
@@ -64,8 +109,8 @@ export const ApplicationFormPage = () => {
           title={"Seu nome deve ter no mínimo 3 caracteres"}
         />
         <input
-          name={"idade"}
-          value={form.idade}
+          name={"age"}
+          value={form.age}
           onChange={onChange}
           placeholder="Idade"
           required
@@ -90,7 +135,7 @@ export const ApplicationFormPage = () => {
           pattern={"^.{10,}"}
           title={"Sua profissão deve ter no mínimo 30 caracteres"}
         />
-        <select>
+        <select name="country" onChange={onChange}>
           <option value disabled selected>Escolha um País</option>
           <option value="Afganistan">Afghanistan</option>
           <option value="Albania">Albania</option>
@@ -343,7 +388,6 @@ export const ApplicationFormPage = () => {
       </ApplicationFormItems>
       <HomeButtonContainer>
         <button onClick={goBack}>Voltar</button>
-
       </HomeButtonContainer>
     </ApplicationFormPageContainer>
   )
