@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { useHistory } from "react-router-dom"
+import { HomePageButtons } from "./components/HomePageButtons"
 
 const HomePageContainer = styled.div`
   display: flex;
@@ -16,28 +16,17 @@ const HomeItemsContainer = styled.div`
 `
 const HomeButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 10vw;
+  justify-content: center;
+  width: 25vw;
 `
 
 export const HomePage = () => {
-  const history = useHistory();
-
-  const goToTripPage = () => {
-    history.push("/trips/list")
-  };
-
-  const goToAdminPage = () => {
-    history.push("/login")
-  };
-
   return (
     <HomePageContainer>
       <HomeItemsContainer>
         <h1>LabeX</h1>
         <HomeButtonContainer>
-          <button onClick={goToTripPage}>Ver Viagens</button>
-          <button onClick={goToAdminPage}>Área Admin</button>
+          <HomePageButtons />
         </HomeButtonContainer>
       </HomeItemsContainer>
     </HomePageContainer>
