@@ -1,14 +1,11 @@
-import React from "react"
-import HomePage from "./pages/HomePage"
-import ListTripPage from "./pages/ListTripsPage"
-import AplicationFromPage from "./pages/ApplicationFormPage"
+import { Router } from "./route/router";
+import GlobalStyle from "./themes/globalStyle";
 
 export default function App() {
   return (
     <>
-      <HomePage />
-      <ListTripPage />
-      <AplicationFromPage />
+      <GlobalStyle />
+      <Router />
     </>
   )
 }
